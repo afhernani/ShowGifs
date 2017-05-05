@@ -17,6 +17,8 @@ using System.Windows.Forms;
 using System.Xml.Serialization;
 using ScanGifDir;
 using System.Threading;
+using Explora;
+using Mark;
 
 namespace ShowGifs
 {
@@ -25,6 +27,7 @@ namespace ShowGifs
 	/// </summary>
 	public partial class MainForm : Form
 	{
+		wolker wol = new wolker();
 		Thread s;
 		public MainForm()
 		{

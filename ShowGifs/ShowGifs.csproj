@@ -107,7 +107,15 @@
     <Compile Include="Search.designer.cs">
       <DependentUpon>Search.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlLibrary.cs" />
+    <Compile Include="UserControlLibrary.Designer.cs">
+      <DependentUpon>UserControlLibrary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utilities.cs" />
+    <Compile Include="wolker.cs" />
+    <Compile Include="wolker.Designer.cs">
+      <DependentUpon>wolker.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
