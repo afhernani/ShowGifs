@@ -49,15 +49,18 @@ namespace Mark
 		List<DirectoryInfo> ListDirectories = new List<DirectoryInfo>();
 		void DirFound(DirectoryInfo dir)
 		{
-			if (this.InvokeRequired) this.Invoke(new Action(() =>
-    		{
+			//if (this.InvokeRequired) this.Invoke(new Action(() =>
+    		//{
 				if (!dir.Name.Equals("Thumbails"))
 					ListDirectories.Add(dir);
-			}));	
+			//}));	
 		}
 		Task tarea;
 		CancellationTokenSource cs = new CancellationTokenSource();
-		public void ScanRootPath()
+        /// <summary>
+        /// Run Scan looking for Directories into path roon
+        /// </summary>
+        public void ScanRootPath()
 		{
 			//salimos si no tenemos una raiz
 			if(String.IsNullOrEmpty(RootPath)) return; 
@@ -69,7 +72,10 @@ namespace Mark
 		//Iteracion de la lista.
 		
 		int Index{ get; set; }
-		
+		/// <summary>
+        /// String path next Directory list
+        /// </summary>
+        /// <returns></returns>
 		public string Next()
 		{
 			if (ListDirectories == null)
@@ -83,7 +89,10 @@ namespace Mark
 			}
 			return ListDirectories[Index].FullName;
 		}
-		
+		/// <summary>
+        /// return string path previus directory list
+        /// </summary>
+        /// <returns></returns>
 		public string Previus()
 		{
 			if (ListDirectories == null)

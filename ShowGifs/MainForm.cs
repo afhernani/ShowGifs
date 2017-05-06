@@ -183,8 +183,52 @@ namespace ShowGifs
 					LanchMoveCurrentFilePath(CurrentFilePath);
 				return true;
 			}
-			return base.ProcessCmdKey(ref msg, keyData);
+		    if (keyData == Keys.Left)
+		    {
+                Debug.WriteLine("< <-- > + Arraw left");
+                //TODO: hacer algo aqui.
+		        AdvancePage();
+                return true;
+            }
+            if (keyData == Keys.Right)
+            {
+                Debug.WriteLine("< --> > + Arraw right");
+                //TODO: hacer algo aqui.
+                //retroceder explorando.
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
 		}
+        /// <summary>
+        /// inicializa el wolker retrocediendo n niveles.
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="nivel"></param>
+	    private void InicializaWolker(string root, int n)
+	    {
+            //TODO: introducir el directorio de scan.
+            string[] name = root.Split(Convert.ToChar(@"\"));
+            string path = name[0];
+            for (int i = 1; i < name.Length-n; i++)
+            {
+                path += @"\" + name[i];
+            }
+            Debug.WriteLine($"Directorio para escanear: {path}\n");
+            wol = new wolker(path);
+            wol.ScanRootPath();
+	    }
+        /// <summary>
+        /// AdvancePage, siguiente directorio del raiz.
+        /// </summary>
+	    private void AdvancePage()
+	    {
+            //limpia la pagina actual/seleccionada
+            //añade los nuevos elementos del directorio siguiente
+            FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+            flow.Controls.Clear();
+            string dir = wol.Next();
+            LoadPage(dir+@"\Thumbails");
+        }
 
 		private void LanchMoveCurrentFilePath(string currentfilepath)
 		{
@@ -252,11 +296,16 @@ namespace ShowGifs
 				//contenidos en el directorio.
 				//PathsToLoadForApply = setDirectory.SelectedPath;
 
-				try {
-					FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+				try
+				{
+				    string dirselect = setDirectory.SelectedPath+@"\Thumbails";
+                    //si no existe el directorio, lanzar makergif, que lo creará por ahora no hace nada.
+				    if (!Directory.Exists(dirselect)) return;
+                    FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
 					string[] name = setDirectory.SelectedPath.Split(Convert.ToChar(@"\"));
 					tabControl1.SelectedTab.Text = name[name.Length - 1];
-					t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(setDirectory.SelectedPath), flow));
+                    InicializaWolker(setDirectory.SelectedPath, 1);
+					t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(setDirectory.SelectedPath+@"\Thumbails"), flow));
 					//Task.WaitAll(t);
 				} catch (AggregateException ex) {
 					Debug.WriteLine("OpenDirectory error:-> " + ex.Message);
@@ -402,22 +451,36 @@ namespace ShowGifs
 			if (Inicio.Default.FormSize.Height != 0 && Inicio.Default.FormSize.Width != 0) {
 				this.Size = Inicio.Default.FormSize;
 			}
-			if (Directory.Exists(Inicio.Default.DirOpenedPreviusCesion)) {
-				//if(MessageBox.Show("Do you wish open the last cession "+ Inicio.Default.DirOpenedPreviusCesion
-				//                   ,"Open Dirs",MessageBoxButtons.OKCancel
-				//                   ,MessageBoxIcon.Asterisk)
-				//                   == DialogResult.OK){ 	}
-				try {
-					FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
-					string[] name = Inicio.Default.DirOpenedPreviusCesion.Split(Convert.ToChar(@"\"));
-					tabControl1.SelectedTab.Text = name[name.Length - 1];
-					t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(Inicio.Default.DirOpenedPreviusCesion), flow));
-					//Task.WaitAll(t);
-				} catch (Exception ex) {
-					MessageBox.Show(ex.Message);
-				}
-			}
+            LoadPage(Inicio.Default.DirOpenedPreviusCesion);
+			
 		}
+        /// <summary>
+        /// load-page for dir specific.
+        /// </summary>
+        /// <param name="dir"></param>
+	    private void LoadPage(string dir)
+	    {
+            if (Directory.Exists(dir))
+            {
+                //if(MessageBox.Show("Do you wish open the last cession "+ Inicio.Default.DirOpenedPreviusCesion
+                //                   ,"Open Dirs",MessageBoxButtons.OKCancel
+                //                   ,MessageBoxIcon.Asterisk)
+                //                   == DialogResult.OK){ 	}
+                try
+                {
+                    FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+                    string[] name = dir.Split(Convert.ToChar(@"\"));
+                    tabControl1.SelectedTab.Text = name[name.Length - 2];
+                    t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(dir), flow));
+                    //Task.WaitAll(t);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+        }
+
 		/// <summary>
 		/// Captura y sobreescribe el manejo de la rueda del raton para el panel
 		/// flowLayoutPanel activo en el momento, en su scroll vertical unicamente.
@@ -730,8 +793,13 @@ namespace ShowGifs
 				}
 			}
 		}
-		
-		void TabControl1Selected(object sender, TabControlEventArgs e)
+
+        private void toolStripAfter_Click(object sender, EventArgs e)
+        {
+            AdvancePage();
+        }
+
+        void TabControl1Selected(object sender, TabControlEventArgs e)
 		{
 			TabControl tabcontrol = (TabControl)sender;
 			if (tabcontrol.SelectedTab != null) {
