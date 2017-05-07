@@ -807,11 +807,13 @@ namespace ShowGifs
 
         private void toolStripAfter_Click(object sender, EventArgs e)
         {
+            if (wol == null) return;
             AdvancePage();
         }
 
         private void toolStripBefore_Click(object sender, EventArgs e)
         {
+            if (wol == null) return;
             PreviusPage();
         }
 
