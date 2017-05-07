@@ -229,6 +229,16 @@ namespace ShowGifs
             string dir = wol.Next();
             LoadPage(dir+@"\Thumbails");
         }
+        /// <summary>
+        /// PreviusPage, pagina anterior del directori raiz.
+        /// </summary>
+	    private void PreviusPage()
+	    {
+            FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+            flow.Controls.Clear();
+            string dir = wol.Previus();
+            LoadPage(dir + @"\Thumbails");
+        }
 
 		private void LanchMoveCurrentFilePath(string currentfilepath)
 		{
@@ -797,6 +807,11 @@ namespace ShowGifs
         private void toolStripAfter_Click(object sender, EventArgs e)
         {
             AdvancePage();
+        }
+
+        private void toolStripBefore_Click(object sender, EventArgs e)
+        {
+            PreviusPage();
         }
 
         void TabControl1Selected(object sender, TabControlEventArgs e)
