@@ -46,9 +46,24 @@ namespace Mark
 			// TODO: Add constructor code after the InitializeComponent() call.
 			lib = new UserControlLibrary();
 			lib.DirFounderEvent += DirFound;
+		    lib.EndFoundDirectoriesEvent += EndFound;
 			Index = 0;
 		}
-		List<DirectoryInfo> ListDirectories = new List<DirectoryInfo>();
+
+        private void EndFound()
+        {
+            if (this.InvokeRequired) //utilizado como complementu formulario
+                this.Invoke(new Action(() =>
+                {
+                    Index = ListDirectories.IndexOf(new DirectoryInfo(InitialDirectory));
+                }));
+            else //utilizado como componente
+            {
+                Index = ListDirectories.IndexOf(new DirectoryInfo(InitialDirectory));
+            }
+        }
+
+        List<DirectoryInfo> ListDirectories = new List<DirectoryInfo>();
 		void DirFound(DirectoryInfo dir)
 		{
 		    if (this.InvokeRequired) //utilizado como complementu formulario
