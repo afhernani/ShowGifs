@@ -215,6 +215,7 @@ namespace ShowGifs
             }
             Debug.WriteLine($"Directorio para escanear: {path}\n");
             wol = new wolker(path);
+            wol.InitialDirectory = root;
             wol.ScanRootPath();
 	    }
         /// <summary>
