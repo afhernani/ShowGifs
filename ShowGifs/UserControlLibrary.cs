@@ -145,6 +145,7 @@ namespace Explora
             	OnDirFounderHandler(element);
                 Debug.WriteLine(element.Name);                
             }
+            OnEndFoundDirectoiresHandler();//lanza manejador fin de busqueda.
         }
         
         public List<string> FilesNotFound { get; set; } // = new List<string>();
@@ -196,5 +197,14 @@ namespace Explora
         {
         	if(DirFounderEvent!=null)DirFounderEvent.Invoke(Dir);
         }
+
+	    public delegate void EndFondDirectories();
+
+	    public event EndFondDirectories EndFoundDirectoriesEvent;
+
+	    private void OnEndFoundDirectoiresHandler()
+	    {
+	        if(EndFoundDirectoriesEvent!=null) EndFoundDirectoriesEvent.Invoke();
+	    }
 	}
 }
