@@ -307,34 +307,13 @@ namespace ShowGifs
 				//contenidos en el directorio.
 				//PathsToLoadForApply = setDirectory.SelectedPath;
 
-				try
-				{
-				    string dirselect = setDirectory.SelectedPath+@"\Thumbails";
-                    //si no existe el directorio, lanzar makergif, que lo creará por ahora no hace nada.
-				    if (!Directory.Exists(dirselect)) return;
-                    FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
-					string[] name = setDirectory.SelectedPath.Split(Convert.ToChar(@"\"));
-					tabControl1.SelectedTab.Text = name[name.Length - 1];
-                    InicializaWolker(setDirectory.SelectedPath, 1);
-					t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(setDirectory.SelectedPath+@"\Thumbails"), flow));
-					//Task.WaitAll(t);
-				} catch (AggregateException ex) {
-					Debug.WriteLine("OpenDirectory error:-> " + ex.Message);
-					// Display information about each exception. 
-					foreach (var v in ex.InnerExceptions) {
-						if (v is TaskCanceledException)
-							Debug.WriteLine("   TaskCanceledException: Task {0}",
-								((TaskCanceledException)v).Task.Id);
-						else
-							Debug.WriteLine("   Exception: {0}", v.GetType().Name);
-					}
-					Debug.WriteLine("");
-				} finally {
-					//tokenSource.Dispose();
-				}
-			} else {
-				return;
-			}
+			    string selectedPath = setDirectory.SelectedPath;
+
+                string dirthumbails = selectedPath + @"\Thumbails";
+                InicializaWolker(selectedPath, 1);
+				LoadPage(dirthumbails);
+
+			} 
 		}
         
 		void NewPageToolStripMenuItemClick(object sender, EventArgs e)
@@ -485,9 +464,23 @@ namespace ShowGifs
                     t = Task.Factory.StartNew(() => LoadImagesFromDirectoryAll(new DirectoryInfo(dir), flow));
                     //Task.WaitAll(t);
                 }
-                catch (Exception ex)
+                catch (AggregateException ex)
                 {
-                    MessageBox.Show(ex.Message);
+                    Debug.WriteLine("OpenDirectory error:-> " + ex.Message);
+                    // Display information about each exception. 
+                    foreach (var v in ex.InnerExceptions)
+                    {
+                        if (v is TaskCanceledException)
+                            Debug.WriteLine("   TaskCanceledException: Task {0}",
+                                ((TaskCanceledException)v).Task.Id);
+                        else
+                            Debug.WriteLine("   Exception: {0}", v.GetType().Name);
+                    }
+                    Debug.WriteLine("");
+                }
+                finally
+                {
+                    //tokenSource.Dispose();
                 }
             }
         }
