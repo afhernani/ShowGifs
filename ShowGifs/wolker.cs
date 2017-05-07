@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -27,6 +28,7 @@ namespace Mark
 		UserControlLibrary lib;
 		
 		public string RootPath{ get; set; }
+        public string InitialDirectory { get; set; }
 		
 		public wolker(string root):this()
 		{
@@ -49,11 +51,17 @@ namespace Mark
 		List<DirectoryInfo> ListDirectories = new List<DirectoryInfo>();
 		void DirFound(DirectoryInfo dir)
 		{
-			//if (this.InvokeRequired) this.Invoke(new Action(() =>
-    		//{
-				if (!dir.Name.Equals("Thumbails"))
-					ListDirectories.Add(dir);
-			//}));	
+		    if (this.InvokeRequired) //utilizado como complementu formulario
+		        this.Invoke(new Action(() =>
+		        {
+		            if (!dir.Name.Equals("Thumbails"))
+		                ListDirectories.Add(dir);
+		        }));
+		    else //utilizado como componente
+		    {
+                if (!dir.Name.Equals("Thumbails"))
+                    ListDirectories.Add(dir);
+            }	
 		}
 		Task tarea;
 		CancellationTokenSource cs = new CancellationTokenSource();
