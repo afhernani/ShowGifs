@@ -55,11 +55,21 @@ namespace Mark
             if (this.InvokeRequired) //utilizado como complementu formulario
                 this.Invoke(new Action(() =>
                 {
-                    Index = ListDirectories.IndexOf(new DirectoryInfo(InitialDirectory));
+                    foreach (DirectoryInfo item in ListDirectories)
+                    {
+
+                        if (item.FullName.Equals(InitialDirectory))
+                            Index = ListDirectories.IndexOf(item);
+                    }
                 }));
             else //utilizado como componente
             {
-                Index = ListDirectories.IndexOf(new DirectoryInfo(InitialDirectory));
+                foreach (DirectoryInfo item in ListDirectories)
+                {
+
+                    if (item.FullName.Equals(InitialDirectory))
+                        Index = ListDirectories.IndexOf(item);
+                }
             }
         }
 
