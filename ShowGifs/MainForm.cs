@@ -207,16 +207,29 @@ namespace ShowGifs
 	    private void InicializaWolker(string root, int n)
 	    {
             //TODO: introducir el directorio de scan.
+            string pathroot = PathNivel(root, n);
+            Debug.WriteLine($"Directorio para escanear: {pathroot}\n");
+            wol = new wolker(pathroot);
+            wol.InitialDirectory = root;
+            wol.ScanRootPath();
+
+	    }
+        /// <summary>
+        /// Utilidad para retroceder
+        /// devuelve el nivel n veces inferior en el path
+        /// </summary>
+        /// <param name="root"></param>
+        /// <param name="n"></param>
+        /// <returns></returns>
+	    private static string PathNivel(string root, int n)
+	    {
             string[] name = root.Split(Convert.ToChar(@"\"));
             string path = name[0];
-            for (int i = 1; i < name.Length-n; i++)
+            for (int i = 1; i < name.Length - n; i++)
             {
                 path += @"\" + name[i];
             }
-            Debug.WriteLine($"Directorio para escanear: {path}\n");
-            wol = new wolker(path);
-            wol.InitialDirectory = root;
-            wol.ScanRootPath();
+	        return path;
 	    }
         /// <summary>
         /// AdvancePage, siguiente directorio del raiz.
