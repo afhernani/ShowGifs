@@ -143,13 +143,13 @@ namespace ShowGifs
 			Debug.WriteLine("sprite_Click");
 			PictureBox sprite = (PictureBox)sender;
 			CurrentFilePath = sprite.Tag.ToString();
-			Debug.WriteLine("name = " + sprite.Tag.ToString());
+			Debug.WriteLine("name = " + CombineAddressFileMovie(sprite.Tag.ToString()));
 			//pictureBox1.Image = sprite.Sprite;
 			//propertyGrid1.SelectedObject = sprite;
 			//ctrlSearch1.SearchString = GetFileNameFromString(sprite.FileSprite);
 		}
 
-		public static string GetFileNameFromString(string name)
+		private static string GetFileNameFromString(string name)
 		{
 			int pos = name.IndexOf(@"_thumbs_", StringComparison.Ordinal);
 			if (pos == -1)
@@ -157,10 +157,24 @@ namespace ShowGifs
 			name = name.Substring(0, pos);
 			return Path.GetFileName(name);
 		}
+
+	    private static string CombineAddressFileMovie(string currentfilepath)
+	    {
+	        string name = null;
+	        string cad = null;
+	        if (!String.IsNullOrEmpty(currentfilepath))
+	        {
+                name = GetFileNameFromString(currentfilepath);
+	            cad = Path.Combine(PathNivel(Path.GetDirectoryName(currentfilepath), 1), name);
+	        }
+            Debug.WriteLine($"direccion fichero: {cad}");
+	        return cad;
+	    }
+
 		#endregion
         
 		#region ManejoKey
-		public string CurrentFile{ get; set; }
+		private string CurrentFile{ get; set; }
         
 		protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
 		{
