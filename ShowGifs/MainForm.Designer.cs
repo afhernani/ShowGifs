@@ -317,6 +317,7 @@ namespace ShowGifs
             this.toolStripReproducir.Name = "toolStripReproducir";
             this.toolStripReproducir.Size = new System.Drawing.Size(36, 36);
             this.toolStripReproducir.Text = "lanch video";
+            this.toolStripReproducir.Click += new System.EventHandler(this.toolStripReproducir_Click);
             // 
             // toolStripGif
             // 

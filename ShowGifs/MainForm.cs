@@ -837,6 +837,14 @@ namespace ShowGifs
             PreviusPage();
         }
 
+        private void toolStripReproducir_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(CurrentFilePath)) return;
+            string movie = CombineAddressFileMovie(CurrentFilePath);
+            if (File.Exists(movie)) Process.Start(movie);
+
+        }
+
         void TabControl1Selected(object sender, TabControlEventArgs e)
 		{
 			TabControl tabcontrol = (TabControl)sender;
