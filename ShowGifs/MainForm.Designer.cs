@@ -237,6 +237,10 @@ namespace ShowGifs
             this.tabControl1.Size = new System.Drawing.Size(1021, 473);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1Selected);
+            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDrop);
+            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.OnDragEnter);
+            this.tabControl1.DragOver += new System.Windows.Forms.DragEventHandler(this.OnDragOver);
+            this.tabControl1.DragLeave += new System.EventHandler(this.OnDragLeave);
             // 
             // tabPage1
             // 
@@ -341,6 +345,7 @@ namespace ShowGifs
             this.toolStripScull.Name = "toolStripScull";
             this.toolStripScull.Size = new System.Drawing.Size(36, 36);
             this.toolStripScull.Text = "Scull";
+            this.toolStripScull.Click += new System.EventHandler(this.toolStripScull_Click);
             // 
             // toolStripSeparator8
             // 

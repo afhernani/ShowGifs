@@ -252,7 +252,8 @@ namespace ShowGifs
 	    {
             //limpia la pagina actual/seleccionada
             //añade los nuevos elementos del directorio siguiente
-            FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+            FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0]; 
+            //(FlowLayoutPanel)((TabPage)sender).Controls[0];
             flow.Controls.Clear();
             string dir = wol.Next();
             LoadPage(dir+@"\Thumbails");
@@ -546,7 +547,6 @@ namespace ShowGifs
 
 		#region drag-drog
 
-
 		protected string[] ArrayFilesNames = null;
 		//protected string lastFilename=String.Empty;
 		protected DragDropEffects effect;
@@ -824,6 +824,7 @@ namespace ShowGifs
 				}
 			}
 		}
+		#endregion
 
         private void toolStripAfter_Click(object sender, EventArgs e)
         {
@@ -845,6 +846,18 @@ namespace ShowGifs
 
         }
 
+        private void toolStripScull_Click(object sender, EventArgs e)
+        {
+            //TODO enlazar el wolker con la pagina activa.
+            FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
+            PictureBox picture =(PictureBox)flow.Controls[0];
+            if (picture != null)
+            {
+                string direccion = picture.Tag.ToString();
+                InicializaWolker(PathNivel(Path.GetDirectoryName(direccion),1), 1);     
+            }
+        }
+
         void TabControl1Selected(object sender, TabControlEventArgs e)
 		{
 			TabControl tabcontrol = (TabControl)sender;
@@ -855,7 +868,6 @@ namespace ShowGifs
 		}
 		
 		  
-		#endregion
 		
 	}
 }
