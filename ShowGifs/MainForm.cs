@@ -850,6 +850,8 @@ namespace ShowGifs
         {
             //TODO enlazar el wolker con la pagina activa.
             FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
+			if (flow.Controls.Count == 0)
+				return;
             PictureBox picture =(PictureBox)flow.Controls[0];
             if (picture != null)
             {
@@ -865,6 +867,26 @@ namespace ShowGifs
 				this.Text = "ShowGif: -" + tabcontrol.SelectedTab.Text + "- " +
 				tabcontrol.SelectedTab.Controls[0].Controls.Count.ToString() + " items";     
 			}
+		}
+		void ToolStripGifClick(object sender, EventArgs e)
+		{
+			Image sprite = Image.FromFile(CurrentFilePath);
+			FGif fgif = new FGif();
+			Size size = new Size(sprite.Width, sprite.Height);
+			fgif.Size = size;
+			fgif.ImageToView = sprite;
+			fgif.Tag = sprite.Tag;
+			fgif.Show();
+		}
+		void ToolStripAboutClick(object sender, EventArgs e)
+		{
+			Creditos pres = Creditos.GetCreditos();
+			pres.Show();
+		}
+		void ToolStripExplorerClick(object sender, EventArgs e)
+		{
+            Explora explo = Explora.GetInstancia();
+            explo.Show();
 		}
 		
 		  
