@@ -875,7 +875,7 @@ namespace ShowGifs
 			Size size = new Size(sprite.Width, sprite.Height);
 			fgif.Size = size;
 			fgif.ImageToView = sprite;
-			fgif.Tag = sprite.Tag;
+            fgif.Tag = CurrentFilePath;// sprite.Tag;
 			fgif.Show();
 		}
 		void ToolStripAboutClick(object sender, EventArgs e)
