@@ -88,6 +88,7 @@
       <DependentUpon>FGif.cs</DependentUpon>
     </Compile>
     <Compile Include="FileLibrary.cs" />
+    <Compile Include="IForm.cs" />
     <Compile Include="Inicio.Designer.cs">
       <DependentUpon>Inicio.settings</DependentUpon>
       <AutoGen>True</AutoGen>

@@ -25,7 +25,7 @@ namespace ShowGifs
 	/// <summary>
 	/// Description of MainForm.
 	/// </summary>
-	public partial class MainForm : Form
+	public partial class MainForm : Form, IForm
 	{
 		wolker wol;//= new wolker();
 		Thread s;
@@ -886,10 +886,22 @@ namespace ShowGifs
 		void ToolStripExplorerClick(object sender, EventArgs e)
 		{
             Explora explo = Explora.GetInstancia();
-            explo.Show();
+            explo.Show(this);
 		}
-		
-		  
-		
-	}
+
+        void IForm.ChangeDirToExplore(string pathdir)
+        {
+            Debug.WriteLine($"Mainform: {pathdir}");
+            if (Directory.Exists(pathdir + @"\Thumbails"))
+            {
+                //limpia la pagina actual/seleccionada
+                //añade los nuevos elementos del directorio siguiente
+                FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
+                //(FlowLayoutPanel)((TabPage)sender).Controls[0];
+                flow.Controls.Clear();
+                LoadPage(pathdir + @"\Thumbails");
+            }
+            
+        }
+    }
 }

@@ -7,7 +7,9 @@
  * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace ShowGifs
@@ -36,6 +38,15 @@ namespace ShowGifs
                 _instance = new Explora();
             }
             return _instance;
+        }
+
+        private void explorerTextCompnt1_DirectorysInDir(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            string txtPath = ((DirectoryInfo)e.Node.Tag).FullName;
+            Debug.WriteLine(txtPath);
+            IForm forminterfas = this.Owner as IForm;
+            if (forminterfas != null)
+                forminterfas.ChangeDirToExplore(txtPath);
         }
     }
 }
