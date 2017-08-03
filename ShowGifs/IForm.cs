@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,5 +17,10 @@ namespace ShowGifs
         /// </summary>
         /// <param name="pathdir"></param>
         void ChangeDirToExplore(string pathdir);
+        /// <summary>
+        /// Adicionar el fichero encontrado.
+        /// </summary>
+        /// <param name="file"></param>
+        void AddFileFoundedSeached(FileInfo file);
     }
 }

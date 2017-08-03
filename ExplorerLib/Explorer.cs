@@ -298,7 +298,7 @@ namespace ExplorerLib
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"xx1 -> {ex.Message}");
+                Debug.WriteLine("xx1 -> {"+ex.Message+"}");
                 this.Cursor = Cursors.Default;
             }
             

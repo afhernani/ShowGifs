@@ -51,7 +51,7 @@ namespace ShowGifs
             this.explorerTextCompnt1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.explorerTextCompnt1.Location = new System.Drawing.Point(0, 0);
             this.explorerTextCompnt1.Name = "explorerTextCompnt1";
-            this.explorerTextCompnt1.Size = new System.Drawing.Size(292, 308);
+            this.explorerTextCompnt1.Size = new System.Drawing.Size(199, 206);
             this.explorerTextCompnt1.TabIndex = 0;
             this.explorerTextCompnt1.TrackPath = "";
             this.explorerTextCompnt1.DirectorysInDir += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.explorerTextCompnt1_DirectorysInDir);
@@ -60,8 +60,9 @@ namespace ShowGifs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 308);
+            this.ClientSize = new System.Drawing.Size(199, 206);
             this.Controls.Add(this.explorerTextCompnt1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Explora";
             this.Text = "Explorer Directories";

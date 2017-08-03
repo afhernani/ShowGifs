@@ -43,7 +43,7 @@
             this.treeView_m.Dock = System.Windows.Forms.DockStyle.None;
             this.treeView_m.LineColor = System.Drawing.Color.Black;
             this.treeView_m.Location = new System.Drawing.Point(3, 27);
-            this.treeView_m.Size = new System.Drawing.Size(238, 268);
+            this.treeView_m.Size = new System.Drawing.Size(142, 187);
             // 
             // txtPath
             // 
@@ -51,7 +51,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPath.Location = new System.Drawing.Point(3, 3);
             this.txtPath.Name = "txtPath";
-            this.txtPath.Size = new System.Drawing.Size(201, 20);
+            this.txtPath.Size = new System.Drawing.Size(105, 20);
             this.txtPath.TabIndex = 1;
             this.txtPath.Click += new System.EventHandler(this.txtPath_Click);
             // 
@@ -59,7 +59,7 @@
             // 
             this.btnSaveReg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSaveReg.Image = ((System.Drawing.Image)(resources.GetObject("btnSaveReg.Image")));
-            this.btnSaveReg.Location = new System.Drawing.Point(206, 3);
+            this.btnSaveReg.Location = new System.Drawing.Point(110, 3);
             this.btnSaveReg.Name = "btnSaveReg";
             this.btnSaveReg.Size = new System.Drawing.Size(20, 20);
             this.btnSaveReg.TabIndex = 2;
@@ -70,7 +70,7 @@
             // 
             this.btnLoadReg.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnLoadReg.Image = ((System.Drawing.Image)(resources.GetObject("btnLoadReg.Image")));
-            this.btnLoadReg.Location = new System.Drawing.Point(226, 3);
+            this.btnLoadReg.Location = new System.Drawing.Point(130, 3);
             this.btnLoadReg.Name = "btnLoadReg";
             this.btnLoadReg.Size = new System.Drawing.Size(20, 20);
             this.btnLoadReg.TabIndex = 3;
@@ -84,7 +84,7 @@
             this.Controls.Add(this.btnSaveReg);
             this.Controls.Add(this.txtPath);
             this.Name = "ExplorerTextCompnt";
-            this.Size = new System.Drawing.Size(244, 299);
+            this.Size = new System.Drawing.Size(148, 218);
             this.Controls.SetChildIndex(this.treeView_m, 0);
             this.Controls.SetChildIndex(this.txtPath, 0);
             this.Controls.SetChildIndex(this.btnSaveReg, 0);

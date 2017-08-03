@@ -78,6 +78,7 @@ namespace ShowGifs
 			this.toolStripScull = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripExplorer = new System.Windows.Forms.ToolStripButton();
+			this.toolStripBuscar = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
 			this.toolStripSettin = new System.Windows.Forms.ToolStripButton();
 			this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -280,6 +281,7 @@ namespace ShowGifs
 			this.toolStripScull,
 			this.toolStripSeparator8,
 			this.toolStripExplorer,
+			this.toolStripBuscar,
 			this.toolStripSeparator7,
 			this.toolStripSettin,
 			this.toolStripSeparator9,
@@ -288,7 +290,7 @@ namespace ShowGifs
 			this.toolStrip.Location = new System.Drawing.Point(3, 0);
 			this.toolStrip.Name = "toolStrip";
 			this.toolStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-			this.toolStrip.Size = new System.Drawing.Size(397, 39);
+			this.toolStrip.Size = new System.Drawing.Size(433, 39);
 			this.toolStrip.TabIndex = 3;
 			this.toolStrip.Text = "toolStrip1";
 			// 
@@ -364,9 +366,19 @@ namespace ShowGifs
 			this.toolStripExplorer.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripExplorer.Name = "toolStripExplorer";
 			this.toolStripExplorer.Size = new System.Drawing.Size(36, 36);
-			this.toolStripExplorer.Text = "toolStripButton1";
+			this.toolStripExplorer.Text = "Explore directory";
 			this.toolStripExplorer.ToolTipText = "Explorar archivos";
 			this.toolStripExplorer.Click += new System.EventHandler(this.ToolStripExplorerClick);
+			// 
+			// toolStripBuscar
+			// 
+			this.toolStripBuscar.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+			this.toolStripBuscar.Image = ((System.Drawing.Image)(resources.GetObject("toolStripBuscar.Image")));
+			this.toolStripBuscar.ImageTransparentColor = System.Drawing.Color.Magenta;
+			this.toolStripBuscar.Name = "toolStripBuscar";
+			this.toolStripBuscar.Size = new System.Drawing.Size(36, 36);
+			this.toolStripBuscar.Text = "Search files";
+			this.toolStripBuscar.Click += new System.EventHandler(this.ToolStripBuscarClick);
 			// 
 			// toolStripSeparator7
 			// 
@@ -403,7 +415,7 @@ namespace ShowGifs
 			this.toolStripAbout.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.toolStripAbout.Name = "toolStripAbout";
 			this.toolStripAbout.Size = new System.Drawing.Size(36, 36);
-			this.toolStripAbout.Text = "toolStripButton1";
+			this.toolStripAbout.Text = "About Application";
 			this.toolStripAbout.ToolTipText = "About";
 			this.toolStripAbout.Click += new System.EventHandler(this.ToolStripAboutClick);
 			// 
@@ -463,5 +475,6 @@ namespace ShowGifs
         private System.Windows.Forms.ToolStripButton toolStripHelp;
         private System.Windows.Forms.ToolStripButton toolStripExplorer;
         private System.Windows.Forms.ToolStripButton toolStripAbout;
+        private System.Windows.Forms.ToolStripButton toolStripBuscar;
     }
 }
