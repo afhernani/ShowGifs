@@ -24,10 +24,10 @@ namespace ShowGifs
 			// The InitializeComponent() call is required for Windows Forms designer support.
 			//
 			InitializeComponent();
-			
-			//
-			// TODO: Add constructor code after the InitializeComponent() call.
-			//
+		    //
+		    // TODO: Add constructor code after the InitializeComponent() call.
+		    //
+		    this.KeyPreview = true;
 		}
 
         private void userSearch1_FileFounderEvent(System.IO.FileInfo file)
@@ -40,6 +40,16 @@ namespace ShowGifs
                         forminterfas?.AddFileFoundedSeached(file);
                 }));
             
+        }
+
+        private void Busca_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+            {
+                //todo: aqui vamos a establecer el escape de busqueda.
+                Debug.WriteLine("busca_KeyDown()");
+                userSearch1.Cs.Cancel();
+            }
         }
     }
 }

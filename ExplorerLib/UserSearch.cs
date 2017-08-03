@@ -212,8 +212,11 @@ namespace ExplorerLib
         }
 
         #endregion
+        #region Keys_manager
+
+        #endregion
         Task _tarea;
-	    private CancellationTokenSource _cs;
+	    public CancellationTokenSource Cs ;
         private void textBoxString_KeyDown(object sender, KeyEventArgs e)
         {
             if ((int)e.KeyCode == (int)Keys.Enter)
@@ -221,10 +224,10 @@ namespace ExplorerLib
                 e.SuppressKeyPress = true;
                 Debug.WriteLine($"codigo pulsado: {e.KeyCode}:{Keys.Enter}:");
                 //todo: aqui vamos a lanzar la busqueda.
-                _cs = new CancellationTokenSource();
+                Cs = new CancellationTokenSource();
                 StrSearch=$"Buscando: => * { textBoxString.Text} * /(amplia).\n";
                 //lib.SearchFileinDirectory(new DirectoryInfo(txtWhere.Text),"*"+txtWhat.Text+"*");
-                _tarea = new Task(() => SearchFileinDirectory(new DirectoryInfo(Root), $"*{textBoxString.Text}*", _cs));
+                _tarea = new Task(() => SearchFileinDirectory(new DirectoryInfo(Root), $"*{textBoxString.Text}*", Cs));
                 _tarea.Start();
             }
         }

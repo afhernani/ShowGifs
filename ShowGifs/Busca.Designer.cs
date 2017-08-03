@@ -57,8 +57,9 @@ namespace ShowGifs
             this.ClientSize = new System.Drawing.Size(318, 94);
             this.Controls.Add(this.userSearch1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
+            this.KeyPreview = true;
             this.Name = "Busca";
-            this.Text = "Busca";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Busca_KeyDown);
             this.ResumeLayout(false);
 
 		}
