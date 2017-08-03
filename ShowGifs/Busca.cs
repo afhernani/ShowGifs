@@ -47,8 +47,8 @@ namespace ShowGifs
             if (e.KeyCode == Keys.Escape)
             {
                 //todo: aqui vamos a establecer el escape de busqueda.
-                Debug.WriteLine("busca_KeyDown()");
-                userSearch1.Cs.Cancel();
+                Debug.WriteLine("busca_KeyDown() <Escape>");
+                userSearch1.Cs?.Cancel();
             }
         }
     }

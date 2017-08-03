@@ -38,6 +38,7 @@ namespace ShowGifs
 		private void InitializeComponent()
 		{
             this.userSearch1 = new ExplorerLib.UserSearch();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // userSearch1
@@ -50,18 +51,31 @@ namespace ShowGifs
             this.userSearch1.TabIndex = 0;
             this.userSearch1.FileFounderEvent += new ExplorerLib.UserSearch.FileFounder(this.userSearch1_FileFounderEvent);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(19, 73);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "*Esc To exit search";
+            // 
             // Busca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(318, 94);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.userSearch1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
             this.Name = "Busca";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Busca_KeyDown);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
 		}
-	}
+
+        private System.Windows.Forms.Label label1;
+    }
 }
