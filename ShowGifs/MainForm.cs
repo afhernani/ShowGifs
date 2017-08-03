@@ -384,6 +384,9 @@ namespace ShowGifs
             {
                 TabPage page = tabControl1.SelectedTab;
                 tabControl1.Controls.Remove(page);
+                if(tabControl1.Controls.Count == 0)
+                    NewPageToolStripMenuItemClick(tabControl1, new EventArgs());
+
             }
 
         }
@@ -987,6 +990,7 @@ namespace ShowGifs
             }
 
         }
+
         /// <summary>
         /// lanza el formulario buscar
         /// </summary>
@@ -998,14 +1002,14 @@ namespace ShowGifs
             fr.Show(this);
         }
 
-        private FlowLayoutPanel flowsearch;
+        private FlowLayoutPanel _flowsearch;
         public void AddFileFoundedSeached(FileInfo file)
         {
             Debug.WriteLine($"addfilefoundedseached {file.FullName}");
-            flowsearch = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
+            _flowsearch = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
             try
             {
-                if (file.Extension == ".gif" || file.Extension == ".GIF")
+                if (file!=null && (file.Extension == ".gif" || file.Extension == ".GIF"))
                 {
                     PictureBox sprite = new PictureBox()
                     {
@@ -1022,11 +1026,11 @@ namespace ShowGifs
                     sprite.SizeMode = PictureBoxSizeMode.Zoom;
                     sprite.Click += sprite_Click;
                     sprite.MouseClick += sprite_MouseClick;
-                    flowsearch.Controls.Add(sprite);
-                    TabPage tabpage = (TabPage)flowsearch.Parent;
+                    _flowsearch.Controls.Add(sprite);
+                    TabPage tabpage = (TabPage)_flowsearch.Parent;
                     this.Text = @"ShowGif: -" + tabpage.Text + "-" + tabpage.Controls[0].Controls.Count.ToString() + " items";
                 }
-                flowsearch.Refresh();
+                _flowsearch.Refresh();
             }
             catch (Exception ex)
             {

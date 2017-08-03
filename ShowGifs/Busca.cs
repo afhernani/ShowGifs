@@ -39,7 +39,8 @@ namespace ShowGifs
                     IForm forminterfas = this.Owner as IForm;
                         forminterfas?.AddFileFoundedSeached(file);
                 }));
-            Invoke(new Action(() => { this.Text = userSearch1.StrSearch; }));       
+            if(InvokeRequired)
+                Invoke(new Action(() => { this.Text = userSearch1.StrSearch; }));       
         }
 
         private void Busca_KeyDown(object sender, KeyEventArgs e)

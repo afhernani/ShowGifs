@@ -152,12 +152,12 @@ namespace ExplorerLib
         /// <summary>
         /// buscar fichros semejantes.
         /// </summary>
-        /// <param name="Dir"></param>
+        /// <param name="dir"></param>
         /// <param name="cad"></param>
-        private void SearchFileinDirectory(DirectoryInfo Dir, string cad, CancellationTokenSource cs)
+        private void SearchFileinDirectory(DirectoryInfo dir, string cad, CancellationTokenSource cs)
         {
             bool encontrado = false;
-            foreach (DirectoryInfo element in FindRescursive<DirectoryInfo>(Dir, getChildDirectorys, LookForDirectory))
+            foreach (DirectoryInfo element in FindRescursive<DirectoryInfo>(dir, getChildDirectorys, LookForDirectory))
             {
                 cs.Token.ThrowIfCancellationRequested();
                 if (element.Name.Equals("Thumbails"))
@@ -241,7 +241,7 @@ namespace ExplorerLib
             {
                 e.SuppressKeyPress = true;
                 Debug.WriteLine($"codigo pulsado: {e.KeyCode}:{Keys.Enter}:");
-                //todo: aqui vamos a lanzar la busqueda.
+                //todo: aqui vamos a lanzar la tarea de busqueda.
                 Cs = new CancellationTokenSource();
                 StrSearch=$"Buscando: => {textBoxString.Text}";
                 //lib.SearchFileinDirectory(new DirectoryInfo(txtWhere.Text),"*"+txtWhat.Text+"*");
