@@ -218,7 +218,8 @@ namespace ExplorerLib
         {
             if ((int)e.KeyCode == (int)Keys.Enter)
             {
-               Debug.WriteLine($"codigo pulsado: {e.KeyCode}:{Keys.Enter}:");
+                e.SuppressKeyPress = true;
+                Debug.WriteLine($"codigo pulsado: {e.KeyCode}:{Keys.Enter}:");
                 //todo: aqui vamos a lanzar la busqueda.
                 _cs = new CancellationTokenSource();
                 StrSearch=$"Buscando: => * { textBoxString.Text} * /(amplia).\n";

@@ -338,9 +338,9 @@ namespace ShowGifs
         #region contexmenustrip
 
         //lista de directorio favorito.
-        string PathsToLoadForApply { get; set; }
+        private string PathsToLoadForApply { get; set; }
 
-        void OpenDirToolStripMenuItemClick(object sender, EventArgs e)
+        private void OpenDirToolStripMenuItemClick(object sender, EventArgs e)
         {
             //crear pagina nueva.
             NewPageToolStripMenuItemClick(new object() { }, new EventArgs());
@@ -365,7 +365,7 @@ namespace ShowGifs
             }
         }
 
-        void NewPageToolStripMenuItemClick(object sender, EventArgs e)
+        private void NewPageToolStripMenuItemClick(object sender, EventArgs e)
         {
             TabPage tabpage = new TabPage("tabPage" + (tabControl1.Controls.Count + 1).ToString());
             FlowLayoutPanel flow = new FlowLayoutPanel()
@@ -378,7 +378,7 @@ namespace ShowGifs
             tabControl1.SelectedTab = tabpage;
         }
         private bool modificado = false;
-        void ClosePageToolStripMenuItemClick(object sender, EventArgs e)
+        private void ClosePageToolStripMenuItemClick(object sender, EventArgs e)
         {
             if (!modificado)
             {
@@ -387,7 +387,7 @@ namespace ShowGifs
             }
 
         }
-        void OpenFileToolStripMenuItemClick(object sender, EventArgs e)
+        private void OpenFileToolStripMenuItemClick(object sender, EventArgs e)
         {
             string filename = "xmlwriter.txt";
             //crear pagina nueva.
@@ -420,7 +420,7 @@ namespace ShowGifs
             }
         }
 
-        void SaveFileToolStripMenuItemClick(object sender, EventArgs e)
+        private void SaveFileToolStripMenuItemClick(object sender, EventArgs e)
         {
             //salvar lista de componentes. < lista simple >
             Debug.WriteLine("event SaveFileToolStripMenuItemClick");
@@ -451,12 +451,12 @@ namespace ShowGifs
                 Debug.WriteLine("error serializar lista controles: " + ex.Message);
             }
         }
-        void QuitToolStripMenuItemClick(object sender, EventArgs e)
+        private void QuitToolStripMenuItemClick(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        void SaveDirFavoritoToolStripMenuItemClick(object sender, EventArgs e)
+        private void SaveDirFavoritoToolStripMenuItemClick(object sender, EventArgs e)
         {
             try
             {
@@ -469,7 +469,7 @@ namespace ShowGifs
                 MessageBox.Show(ex.Message);
             }
         }
-        void ToolStripMenuItemPlayClick(object sender, EventArgs e)
+        private void ToolStripMenuItemPlayClick(object sender, EventArgs e)
         {
             if (String.IsNullOrEmpty(CurrentFile))
                 return;
@@ -481,7 +481,7 @@ namespace ShowGifs
 
         #region eventformulario
 
-        void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
             {
@@ -500,7 +500,7 @@ namespace ShowGifs
         {
             Application.Run(Creditos.GetCreditos());
         }
-        void MainForm_Load(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
             if (Inicio.Default.FormSize.Height != 0 && Inicio.Default.FormSize.Width != 0)
             {
