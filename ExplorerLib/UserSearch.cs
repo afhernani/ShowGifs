@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Threading.Tasks;
 using System.Collections;
+using System.Linq;
 using System.Threading;
 
 namespace ExplorerLib
@@ -67,7 +68,7 @@ namespace ExplorerLib
         /// <summary>
         /// delegado genericoa implement interfaz IEnumerable
         /// </summary>
-        public delegate IEnumerable getChilds<T>(T element);
+        private delegate IEnumerable getChilds<T>(T element);
         /// <summary>
         /// Función generica de busqueda implement interfaz IEnumerable
         /// se obtiene los nodos de busqueda IEnumerable (elementos) por
@@ -78,7 +79,7 @@ namespace ExplorerLib
         /// <param name="elements">coleccion de elementos implementan IEnumerable</param>
         /// <param name="criterial">logica del criterio de busqueda</param>
         /// <returns></returns>
-        IEnumerable<T> FindRescursive<T>(T parent, getChilds<T> elements, Predicate<T> criterial)
+        private IEnumerable<T> FindRescursive<T>(T parent, getChilds<T> elements, Predicate<T> criterial)
         {
             foreach (T element in elements.Invoke(parent))
             {
@@ -131,13 +132,29 @@ namespace ExplorerLib
             }
             OnFileFounderHandler(null);//simepre que termina la busqueda
         }
-
+        /// <summary>
+        /// compara dos cadenas
+        /// </summary>
+        /// <param name="subcadena"></param>
+        /// <param name="cadena"></param>
+        /// <returns></returns>
+	    public static bool Content(string cadena, string subcadena )
+	    {
+	        bool resp = false;
+            string[] subarray = subcadena.Split(' ').Where(x => !String.IsNullOrEmpty(x)).ToArray();
+            //StringComparison comp = StringComparison.OrdinalIgnoreCase;
+            foreach (var subc in subarray)
+	        {
+	            if (cadena.Contains(subc)) resp = true;
+	        }
+	        return resp;
+	    }
         /// <summary>
         /// buscar fichros semejantes.
         /// </summary>
         /// <param name="Dir"></param>
         /// <param name="cad"></param>
-        public void SearchFileinDirectory(DirectoryInfo Dir, string cad, CancellationTokenSource cs)
+        private void SearchFileinDirectory(DirectoryInfo Dir, string cad, CancellationTokenSource cs)
         {
             bool encontrado = false;
             foreach (DirectoryInfo element in FindRescursive<DirectoryInfo>(Dir, getChildDirectorys, LookForDirectory))
@@ -146,13 +163,14 @@ namespace ExplorerLib
                 if (element.Name.Equals("Thumbails"))
                 {
                     Debug.WriteLine(element.Name);
-                    foreach (FileInfo item in element.GetFiles(cad))
+                    foreach (FileInfo item in element.GetFiles())
                     {
-
-                        encontrado = true;
-                        OnFileFounderHandler(item);
-                        //Console.WriteLine($"found in directory:{element.Name} fichero: {item.FullName}");
-                        Debug.WriteLine("found in directory: " + element.Name + " fichero: " + item.FullName);
+                        if (Content(item.Name, cad))
+                        {  
+                            encontrado = true;
+                            OnFileFounderHandler(item);
+                            Debug.WriteLine($"found in directory:{element.Name} fichero: {item.FullName}");
+                        }
                     }
                 }
             }
@@ -225,9 +243,9 @@ namespace ExplorerLib
                 Debug.WriteLine($"codigo pulsado: {e.KeyCode}:{Keys.Enter}:");
                 //todo: aqui vamos a lanzar la busqueda.
                 Cs = new CancellationTokenSource();
-                StrSearch=$"Buscando: => * { textBoxString.Text} * /(amplia).\n";
+                StrSearch=$"Buscando: => {textBoxString.Text}";
                 //lib.SearchFileinDirectory(new DirectoryInfo(txtWhere.Text),"*"+txtWhat.Text+"*");
-                _tarea = new Task(() => SearchFileinDirectory(new DirectoryInfo(Root), $"*{textBoxString.Text}*", Cs));
+                _tarea = new Task(() => SearchFileinDirectory(new DirectoryInfo(Root), textBoxString.Text, Cs));
                 _tarea.Start();
             }
         }
