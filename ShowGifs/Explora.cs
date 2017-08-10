@@ -30,6 +30,7 @@ namespace ShowGifs
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
+            explorerTextCompnt1.Tracker();
 		}
         public static Explora GetInstancia()
         {
@@ -44,9 +45,9 @@ namespace ShowGifs
         {
             string txtPath = ((DirectoryInfo)e.Node.Tag).FullName;
             Debug.WriteLine(txtPath);
+            explorerTextCompnt1.TrackPath = txtPath; //guardamos la dirección
             IForm forminterfas = this.Owner as IForm;
-            if (forminterfas != null)
-                forminterfas.ChangeDirToExplore(txtPath);
+            forminterfas?.ChangeDirToExplore(txtPath);
         }
     }
 }
