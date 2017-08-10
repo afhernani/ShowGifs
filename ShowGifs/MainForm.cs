@@ -585,7 +585,7 @@ namespace ShowGifs
 			{
 				ScrollProperties Vscroll = flow.VerticalScroll;
 				Debug.WriteLine($"SmalChanges: {Vscroll.SmallChange} , LargeChange: {Vscroll.LargeChange}");
-				Debug.WriteLine("on flow {e.Delta};");
+				Debug.WriteLine($"on flow {e.Delta};");
 				int newValor = Vscroll.Value - e.Delta;
 				if (newValor < Vscroll.Minimum || newValor > Vscroll.Maximum)
 				{
@@ -601,6 +601,7 @@ namespace ShowGifs
 			}
 
 			flow.Invalidate();
+			flow.Dispose();
 			base.OnMouseWheel(e);
 		}
 

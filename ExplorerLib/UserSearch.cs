@@ -25,7 +25,7 @@ namespace ExplorerLib
 	/// </summary>
 	public partial class UserSearch : UserControl
 	{
-		public string Root{ get; set; }
+		public string Root{ get { return textBoxRoot.Text; } set { textBoxRoot.Text = value; } }
 	    public string StrSearch { get; set; } = "Cadena de busqueda";
 		
 		public UserSearch()
@@ -38,7 +38,7 @@ namespace ExplorerLib
 			//
 			// TODO: Add constructor code after the InitializeComponent() call.
 			//
-		    textBoxRoot.Text = Root;
+		    //textBoxRoot.Text = Root;
 		    textBoxString.Text = StrSearch;
 		}
 		void BtnRootClick(object sender, EventArgs e)
@@ -50,7 +50,7 @@ namespace ExplorerLib
 				dialog.SelectedPath = Path.GetDirectoryName(Root);
 			}
 			if (dialog.ShowDialog() == DialogResult.OK) {
-				Root = textBoxRoot.Text = dialog.SelectedPath;
+				Root = dialog.SelectedPath;
 			}
 		}
 
@@ -249,5 +249,7 @@ namespace ExplorerLib
                 _tarea.Start();
             }
         }
+
+        
     }
 }

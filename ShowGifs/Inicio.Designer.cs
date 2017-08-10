@@ -46,5 +46,17 @@ namespace ShowGifs {
                 this["FormSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\")]
+        public string DirBusqueda {
+            get {
+                return ((string)(this["DirBusqueda"]));
+            }
+            set {
+                this["DirBusqueda"] = value;
+            }
+        }
     }
 }

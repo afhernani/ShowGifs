@@ -70,6 +70,8 @@ namespace ShowGifs
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
             this.Name = "Busca";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Busca_FormClosing);
+            this.Load += new System.EventHandler(this.Busca_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Busca_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
