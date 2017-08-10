@@ -63,6 +63,7 @@ namespace ShowGifs
         private void Busca_FormClosing(object sender, FormClosingEventArgs e)
         {
             Inicio.Default.DirBusqueda = userSearch1.Root;
+            Inicio.Default.Save();
         }
     }
 }
