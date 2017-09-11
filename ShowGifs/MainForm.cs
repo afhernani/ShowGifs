@@ -19,6 +19,7 @@ using ScanGifDir;
 using System.Threading;
 using Explora;
 using Mark;
+using ThumbLib;
 
 namespace ShowGifs
 {
@@ -510,7 +511,24 @@ namespace ShowGifs
 				Inicio.Default.DirOpenedPreviusCesion = PathsToLoadForApply;
 				Inicio.Default.Save();
 			}
-		}
+            KillProcess();
+
+        }
+        /// <summary>
+        /// kill any process.
+        /// </summary>
+        public static void KillProcess()
+        {
+            foreach (var process in Process.GetProcesses())
+            {
+                if (process.ProcessName != null)
+                    if (process.ProcessName == "ffmpeg")
+                    {
+                        Debug.WriteLine($"Kiled process {process}");
+                        process.Kill();
+                    }
+            }
+        }
 
 		private void SplastStrart()
 		{
@@ -1008,6 +1026,8 @@ namespace ShowGifs
 				//(FlowLayoutPanel)((TabPage)sender).Controls[0];
 				flow.Controls.Clear();
 				LoadPage(pathdir + @"\Thumbails");
+                //lanzamos la tarea de comprobacion de contenido en el directorio.
+                TaskSearchContem(pathdir);
 			}
 		}
 
@@ -1058,5 +1078,31 @@ namespace ShowGifs
 				MessageBox.Show(ex.Message + ex.ToString());
 			}
 		}
-	}
+        #region thumbmake
+        private ScanThumb scan; //componente.
+        Task T; //tarea.
+        private void TaskSearchContem(string dirCompare)
+        {
+            if (T!=null && !T.IsCompleted) return;
+            if (Directory.Exists(dirCompare))
+            {
+                
+                scan = new ScanThumb(dirCompare);
+                //scan.EndThreadEvent += EndthreadfileAll;
+                //scan.EndOneThreadEvent += EndOneThreadFile;
+                T = Task.Factory.StartNew(Tarea);
+            }
+            else
+            {
+                MessageBox.Show($"No exite del directorio {dirCompare}");
+            }
+        }
+        private void Tarea()
+        {
+            scan.Star();
+            //Debug.WriteLine($"Tarea() ==> Finalizada ..");
+        }
+
+        #endregion
+    }
 }

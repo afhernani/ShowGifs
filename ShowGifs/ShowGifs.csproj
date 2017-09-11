@@ -181,6 +181,10 @@
       <Project>{7d2ee8df-6750-494e-93b5-afe500b560dc}</Project>
       <Name>ExplorerLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ThumbLib\ThumbLib.csproj">
+      <Project>{fcdcab99-0155-4efc-91c9-25cb23ad8caf}</Project>
+      <Name>ThumbLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-# SharpDevelop 5.1
-VisualStudioVersion = 12.0.20827.3
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShowGifs", "ShowGifs\ShowGifs.csproj", "{64D859A6-7357-4849-933F-D3879AF57585}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerLib", "ExplorerLib\ExplorerLib.csproj", "{7D2EE8DF-6750-494E-93B5-AFE500B560DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThumbLib", "ThumbLib\ThumbLib.csproj", "{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -22,5 +23,15 @@ Global
 		{7D2EE8DF-6750-494E-93B5-AFE500B560DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D2EE8DF-6750-494E-93B5-AFE500B560DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D2EE8DF-6750-494E-93B5-AFE500B560DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0DED8D5E-0193-41DD-AA04-9991B1624E23}
 	EndGlobalSection
 EndGlobal
