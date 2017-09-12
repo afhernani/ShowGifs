@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Block.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="FileLibrary.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="utilSerializationXml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="mover-1.ico" />
