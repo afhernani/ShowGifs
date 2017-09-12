@@ -543,6 +543,9 @@ namespace ShowGifs
 			}
 
 			LoadPage(Inicio.Default.DirOpenedPreviusCesion);
+            //dimension del control sprite.
+            _ancho = Inicio.Default.SpriteSize.Width;
+            _alto = Inicio.Default.SpriteSize.Height;
 		}
 
 		/// <summary>

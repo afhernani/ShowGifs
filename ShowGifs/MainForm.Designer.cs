@@ -200,11 +200,11 @@ namespace ShowGifs
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1021, 473);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(564, 369);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(1021, 534);
+            this.toolStripContainer1.Size = new System.Drawing.Size(564, 430);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -219,7 +219,7 @@ namespace ShowGifs
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1021, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(564, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -237,7 +237,7 @@ namespace ShowGifs
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1021, 473);
+            this.tabControl1.Size = new System.Drawing.Size(564, 369);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1Selected);
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDrop);
@@ -253,7 +253,7 @@ namespace ShowGifs
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1013, 447);
+            this.tabPage1.Size = new System.Drawing.Size(556, 343);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -264,7 +264,7 @@ namespace ShowGifs
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1007, 441);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 337);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // toolStrip
@@ -290,7 +290,7 @@ namespace ShowGifs
             this.toolStrip.Location = new System.Drawing.Point(3, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip.Size = new System.Drawing.Size(433, 39);
+            this.toolStrip.Size = new System.Drawing.Size(402, 39);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -426,7 +426,7 @@ namespace ShowGifs
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(1021, 534);
+            this.ClientSize = new System.Drawing.Size(564, 430);
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
