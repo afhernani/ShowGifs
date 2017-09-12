@@ -4,12 +4,10 @@
  * Fecha: 16/05/2017
  * Hora: 11:52
  * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Drawing;
 using System.Text;
 using FileLib;
 
@@ -32,7 +30,7 @@ namespace BlockLib
 		/// <summary>
 		/// Imagen de referencia
 		/// </summary>
-		public Image Imagen{ get; set; }
+		public byte[] Imagebyte{ get; set; }
 		/// <summary>
 		/// Buffer para guardar fichero .gif
 		/// </summary>

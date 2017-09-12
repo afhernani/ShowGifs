@@ -4,11 +4,10 @@
  * Fecha: 17/11/2016
  * Hora: 23:15
  * 
- * Para cambiar esta plantilla use Herramientas | Opciones | Codificación | Editar Encabezados Estándar
  */
 using System;
 using System.IO;
-using System.Windows.Forms;
+//using System.Windows.Forms;
 
 namespace FileLib
 {
@@ -151,7 +150,7 @@ namespace FileLib
             }
             catch (Exception ex)
             {
-                MessageBox.Show("€\\> " + ex.Message);
+                throw new Exception("€\\> " + ex.Message);
             }
         }
         /// <summary>
@@ -188,7 +187,7 @@ namespace FileLib
             }
             catch (Exception ex)
             {
-                MessageBox.Show("€\\> " + ex.Message);
+                throw new Exception("€\\> " + ex.Message);
             }
         }
         /// <summary>
