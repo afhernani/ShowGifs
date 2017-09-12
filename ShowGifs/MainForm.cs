@@ -1016,6 +1016,7 @@ namespace ShowGifs
 		{
 			Explora explo = Explora.GetInstancia();
 			explo.Show(this);
+            //deberia desabilitar el boton hasta cerrar el formulario
 		}
 
 		void IForm.ChangeDirToExplore(string pathdir)
@@ -1108,7 +1109,21 @@ namespace ShowGifs
         private void toolStripSettin_Click(object sender, EventArgs e)
         {
             Settings settings = new Settings();
-            settings.Show();
+            settings.ShowDialog();//abre el formulario como modal. no continua hasta cerrarlo
+            int alto = Inicio.Default.SpriteSize.Height;
+            int ancho = Inicio.Default.SpriteSize.Width;
+            if(alto != _alto || ancho != _ancho)
+            {
+                Size size = new Size(ancho, alto); //nuevo tamaño
+                foreach (var item in this.tabControl1.Controls)
+                {
+                    TabPage pagina = (TabPage)item;
+                    foreach (var item2 in pagina.Controls[0].Controls)
+                    {
+                        ((PictureBox)item2).Size = size;
+                    }
+                }
+            }
         }
 
         private void Tarea()
