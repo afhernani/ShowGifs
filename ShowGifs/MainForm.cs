@@ -45,7 +45,7 @@ namespace ShowGifs
 
 		private Task t;
 		//private int nf = 0;
-		private int _ancho = 160, _largo = 120;
+		private int _ancho = 160, _alto = 120;
 
 		private void LoadImagesFromDirectoryAll(DirectoryInfo dir, FlowLayoutPanel flow)
 		{
@@ -56,7 +56,7 @@ namespace ShowGifs
 					PictureBox sprite = new PictureBox()
 					{
 						Width = _ancho,
-                        Height = _largo,
+                        Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = fileInfo.FullName,
@@ -670,7 +670,7 @@ namespace ShowGifs
 					PictureBox sprite = new PictureBox()
 					{
 						Width = _ancho,
-                        Height = _largo,
+                        Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = item,
@@ -928,7 +928,7 @@ namespace ShowGifs
 					PictureBox sprite = new PictureBox()
 					{
 						Width = _ancho,
-                        Height = _largo,
+                        Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = item,
@@ -1054,7 +1054,7 @@ namespace ShowGifs
 					PictureBox sprite = new PictureBox()
 					{
 						Width = _ancho,
-                        Height = _largo,
+                        Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = file.FullName,
@@ -1097,6 +1097,17 @@ namespace ShowGifs
                 MessageBox.Show($"No exite del directorio {dirCompare}");
             }
         }
+        /// <summary>
+        /// Establecer algunos parametros de configuracion.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void toolStripSettin_Click(object sender, EventArgs e)
+        {
+            Settings settings = new Settings();
+            settings.Show();
+        }
+
         private void Tarea()
         {
             scan.Star();
