@@ -601,28 +601,35 @@ namespace ShowGifs
 			/* codigo aqui ...*/
             Debug.Write("OnMouseWheel acction ");
 			int ingrementVertical;
-			FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
-			if (flow != null)
-			{
-				ScrollProperties Vscroll = flow.VerticalScroll;
-				Debug.WriteLine($"SmalChanges: {Vscroll.SmallChange} , LargeChange: {Vscroll.LargeChange}");
-				Debug.WriteLine($"on flow {e.Delta};");
-				int newValor = Vscroll.Value - e.Delta;
-				if (newValor < Vscroll.Minimum || newValor > Vscroll.Maximum)
-				{
-					Debug.WriteLine("<Out of Minimum and Maximum>");
-					base.OnMouseWheel(e);
-					return;
-				}
+            foreach (var item in tabControl1.SelectedTab.Controls)
+            {
+                Type tipo = typeof(FlowLayoutPanel);
+                if (item.GetType() == tipo)
+                {
+                    FlowLayoutPanel flow = (FlowLayoutPanel)item;
+                    if (flow != null)
+                    {
+                        ScrollProperties Vscroll = flow.VerticalScroll;
+                        Debug.WriteLine($"SmalChanges: {Vscroll.SmallChange} , LargeChange: {Vscroll.LargeChange}");
+                        Debug.WriteLine($"on flow {e.Delta};");
+                        int newValor = Vscroll.Value - e.Delta;
+                        if (newValor < Vscroll.Minimum || newValor > Vscroll.Maximum)
+                        {
+                            Debug.WriteLine("<Out of Minimum and Maximum>");
+                            base.OnMouseWheel(e);
+                            return;
+                        }
 
-				//habra que depurar mas para no salirse de los limites de los valores
-				//if Value+=e.Deta esta ente el minimo y maximo de los se suma.
-				//analizamos el asunto despues.....
-                flow.VerticalScroll.Value = newValor;
-			}
+                        //habra que depurar mas para no salirse de los limites de los valores
+                        //if Value+=e.Deta esta ente el minimo y maximo de los se suma.
+                        //analizamos el asunto despues.....
+                        flow.VerticalScroll.Value = newValor;
+                        flow.Invalidate();
+                        flow.Dispose();
+                    }
+                }
 
-			flow.Invalidate();
-			flow.Dispose();
+            }
 			base.OnMouseWheel(e);
 		}
 
