@@ -1014,8 +1014,15 @@ namespace ShowGifs
 
 		void ToolStripExplorerClick(object sender, EventArgs e)
 		{
-			Explora explo = Explora.GetInstancia();
-			explo.Show(this);
+            try
+            {
+                Explora explo = Explora.GetInstancia();
+                explo.Show(this);
+            }
+            catch (Exception)
+            {
+                ;
+            }
             //deberia desabilitar el boton hasta cerrar el formulario
 		}
 
@@ -1042,8 +1049,15 @@ namespace ShowGifs
 		/// <param name="e"></param>
 		void ToolStripBuscarClick(object sender, EventArgs e)
 		{
-			Busca fr = new Busca();
-			fr.Show(this);
+            try
+            {
+                Busca fr = new Busca();
+                fr.Show(this);
+            }
+            catch (Exception)
+            {
+                ; //no hace nada
+            }
 		}
 
 		private FlowLayoutPanel _flowsearch;

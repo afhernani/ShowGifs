@@ -99,7 +99,7 @@
             this.checkBoxThreadFiles.AutoSize = true;
             this.checkBoxThreadFiles.Checked = true;
             this.checkBoxThreadFiles.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxThreadFiles.Location = new System.Drawing.Point(18, 94);
+            this.checkBoxThreadFiles.Location = new System.Drawing.Point(18, 70);
             this.checkBoxThreadFiles.Name = "checkBoxThreadFiles";
             this.checkBoxThreadFiles.Size = new System.Drawing.Size(244, 17);
             this.checkBoxThreadFiles.TabIndex = 2;
