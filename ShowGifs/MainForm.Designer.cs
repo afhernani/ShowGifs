@@ -84,6 +84,7 @@ namespace ShowGifs
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripAbout = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOperationFile = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -282,6 +283,7 @@ namespace ShowGifs
             this.toolStripSeparator8,
             this.toolStripExplorer,
             this.toolStripBuscar,
+            this.toolStripButtonOperationFile,
             this.toolStripSeparator7,
             this.toolStripSettin,
             this.toolStripSeparator9,
@@ -290,7 +292,7 @@ namespace ShowGifs
             this.toolStrip.Location = new System.Drawing.Point(3, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip.Size = new System.Drawing.Size(402, 39);
+            this.toolStrip.Size = new System.Drawing.Size(469, 39);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -420,6 +422,16 @@ namespace ShowGifs
             this.toolStripAbout.ToolTipText = "About";
             this.toolStripAbout.Click += new System.EventHandler(this.ToolStripAboutClick);
             // 
+            // toolStripButtonOperationFile
+            // 
+            this.toolStripButtonOperationFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOperationFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperationFile.Image")));
+            this.toolStripButtonOperationFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOperationFile.Name = "toolStripButtonOperationFile";
+            this.toolStripButtonOperationFile.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButtonOperationFile.Text = "toolStripButton1";
+            this.toolStripButtonOperationFile.Click += new System.EventHandler(this.toolStripButtonOperationFile_Click);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -477,5 +489,6 @@ namespace ShowGifs
         private System.Windows.Forms.ToolStripButton toolStripExplorer;
         private System.Windows.Forms.ToolStripButton toolStripAbout;
         private System.Windows.Forms.ToolStripButton toolStripBuscar;
+        private System.Windows.Forms.ToolStripButton toolStripButtonOperationFile;
     }
 }

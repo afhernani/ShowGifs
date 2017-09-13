@@ -186,6 +186,10 @@
     <Content Include="TutosFrance %2819%29.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlockLib\BlockLib.csproj">
+      <Project>{e6ff9df0-955e-464a-9daf-f9320334211e}</Project>
+      <Name>BlockLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExplorerLib\ExplorerLib.csproj">
       <Project>{7d2ee8df-6750-494e-93b5-afe500b560dc}</Project>
       <Name>ExplorerLib</Name>

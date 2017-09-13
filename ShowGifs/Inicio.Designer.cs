@@ -82,5 +82,17 @@ namespace ShowGifs {
                 this["isSearch"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NewPath {
+            get {
+                return ((string)(this["NewPath"]));
+            }
+            set {
+                this["NewPath"] = value;
+            }
+        }
     }
 }

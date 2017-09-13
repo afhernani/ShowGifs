@@ -1140,6 +1140,29 @@ namespace ShowGifs
             }
         }
 
+        private void toolStripButtonOperationFile_Click(object sender, EventArgs e)
+        {
+            if (String.IsNullOrEmpty(CurrentFilePath)) return;
+            string movie = CombineAddressFileMovie(CurrentFilePath);
+            if (File.Exists(movie))
+            {
+                BlockLib.ManagerBlocksForm manager = new BlockLib.ManagerBlocksForm();
+                manager.FullName = movie;
+                manager.FileName = Path.GetFileName(movie);//o currentFilePath
+                if (!string.IsNullOrEmpty(Inicio.Default.NewPath)) manager.NewPath = Inicio.Default.NewPath;
+                manager.ShowDialog();
+                Inicio.Default.NewPath = manager.NewPath;
+                Inicio.Default.Save();
+                //actualizamos la pagina activa recargandola
+                if (manager.isAnyAction)
+                {
+                    IForm vf = this as IForm;
+                    vf?.ChangeDirToExplore(Path.GetDirectoryName(movie));
+                }
+            }
+            
+        }
+
         private void Tarea()
         {
             scan.Star();
