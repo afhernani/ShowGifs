@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7D2EE8DF-6750-494E-93B5-AFE500B560DC}</ProjectGuid>
+    <ProjectGuid>{FCDCAB99-0155-4EFC-91C9-25CB23AD8CAF}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ExplorerLib</RootNamespace>
-    <AssemblyName>ExplorerLib</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <RootNamespace>ThumbLib</RootNamespace>
+    <AssemblyName>ThumbLib</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -29,13 +29,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <ApplicationIcon>tree-3.ico</ApplicationIcon>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,60 +42,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ExplorerTextCompnt.cs">
+    <Compile Include="Converter.cs" />
+    <Compile Include="FileLibrary.cs" />
+    <Compile Include="Founder.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Founder.Designer.cs">
+      <DependentUpon>Founder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScanThumb.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ExplorerTextCompnt.Designer.cs">
-      <DependentUpon>ExplorerTextCompnt.cs</DependentUpon>
+    <Compile Include="ScanThumb.Designer.cs">
+      <DependentUpon>ScanThumb.cs</DependentUpon>
     </Compile>
-    <Compile Include="Explorer.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Explorer.Designer.cs">
-      <DependentUpon>Explorer.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExplorerText.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="ExplorerText.Designer.cs">
-      <DependentUpon>ExplorerText.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ModifyRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
+    <Compile Include="ScanThumbails.cs">
+      <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Registry.cs" />
-    <Compile Include="UserSearch.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserSearch.Designer.cs">
-      <DependentUpon>UserSearch.cs</DependentUpon>
+    <Compile Include="ScanThumbails.Designer.cs">
+      <DependentUpon>ScanThumbails.cs</DependentUpon>
     </Compile>
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ExplorerTextCompnt.resx">
-      <DependentUpon>ExplorerTextCompnt.cs</DependentUpon>
+    <EmbeddedResource Include="ScanThumb.resx">
+      <DependentUpon>ScanThumb.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Explorer.resx">
-      <DependentUpon>Explorer.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExplorerText.resx">
-      <DependentUpon>ExplorerText.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserSearch.resx">
-      <DependentUpon>UserSearch.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="tree-3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

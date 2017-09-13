@@ -125,6 +125,12 @@
     <Compile Include="Search.designer.cs">
       <DependentUpon>Search.cs</DependentUpon>
     </Compile>
+    <Compile Include="Settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Settings.Designer.cs">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlLibrary.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -172,14 +178,25 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Settings.resx">
+      <DependentUpon>Settings.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="TutosFrance %2819%29.ico" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BlockLib\BlockLib.csproj">
+      <Project>{e6ff9df0-955e-464a-9daf-f9320334211e}</Project>
+      <Name>BlockLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExplorerLib\ExplorerLib.csproj">
       <Project>{7d2ee8df-6750-494e-93b5-afe500b560dc}</Project>
       <Name>ExplorerLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ThumbLib\ThumbLib.csproj">
+      <Project>{fcdcab99-0155-4efc-91c9-25cb23ad8caf}</Project>
+      <Name>ThumbLib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

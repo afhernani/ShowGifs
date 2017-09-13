@@ -18,6 +18,7 @@ namespace ShowGifs
 	/// </summary>
 	public partial class Busca : Form
 	{
+	    private string dirsearch = string.Empty;
 		public Busca()
 		{
 			//
@@ -51,6 +52,18 @@ namespace ShowGifs
                 Debug.WriteLine("busca_KeyDown() <Escape>");
                 userSearch1.Cs?.Cancel();
             }
+        }
+
+        private void Busca_Load(object sender, EventArgs e)
+        {
+            dirsearch = Inicio.Default.DirBusqueda;
+            userSearch1.Root = dirsearch;
+        }
+
+        private void Busca_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Inicio.Default.DirBusqueda = userSearch1.Root;
+            Inicio.Default.Save();
         }
     }
 }

@@ -61,7 +61,7 @@ namespace ExplorerLib
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxRoot.Location = new System.Drawing.Point(42, 12);
             this.textBoxRoot.Name = "textBoxRoot";
-            this.textBoxRoot.Size = new System.Drawing.Size(216, 20);
+            this.textBoxRoot.Size = new System.Drawing.Size(207, 20);
             this.textBoxRoot.TabIndex = 1;
             this.textBoxRoot.Click += new System.EventHandler(this.textBoxRoot_Click);
             // 
