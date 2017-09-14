@@ -151,22 +151,24 @@ namespace BlockLib
 				if(block.Asociate){
 					block.Move(NewPath);
 				}
-			}
+                isAnyAction = true;
+            }
 			if (radioButtonC.Checked){
 				Console.WriteLine("Copy ..");
 				Block block = new Block(FullName);
 				if(block.Asociate){
 					block.Copy(NewPath);
 				}
-			}
+                isAnyAction = true;
+            }
 			if (radioButtonR.Checked){
 				Console.WriteLine("Rename ..");
 				Block block = new Block(FullName);
 				if(block.Asociate){
 					block.Rename(NewPath);
 				}
-			}
-            isAnyAction = true;
+                isAnyAction = true;
+            }
             this.Close();
 			
 		}

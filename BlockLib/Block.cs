@@ -87,6 +87,7 @@ namespace BlockLib
 		}
 		/// <summary>
 		/// mover los ficheros a la dirección indicada.
+        /// si existe un fichero con el mismo nonbre lo sobreescribe.
 		/// </summary>
 		/// <param name="ToPath"></param>
 		public void Move(string ToPath)
@@ -98,8 +99,8 @@ namespace BlockLib
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
 				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//mover cada uno.
-				FileLibrary.MoveFile(NameVideo, toFileVideo, true);
-				FileLibrary.MoveFile(NameThumb, toFileThumb, true);
+				FileLibrary.MoveFile(NameVideo, toFileVideo, false); //no sobreescribir
+				FileLibrary.MoveFile(NameThumb, toFileThumb, false);
 				//debemos actualizar los valores
 				NameVideo = toFileVideo;
 				NameThumb = toFileThumb;
@@ -119,8 +120,8 @@ namespace BlockLib
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
 				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//copiar cada uno
-				FileLibrary.CopyFile(NameVideo, toFileVideo, true);
-				FileLibrary.CopyFile(NameThumb, toFileThumb, true);
+				FileLibrary.CopyFile(NameVideo, toFileVideo, false);//no sobreescribe
+				FileLibrary.CopyFile(NameThumb, toFileThumb, false);
 				//no hace nada mas.
 		    }
 		}
