@@ -600,7 +600,7 @@ namespace ShowGifs
 		{
 			/* codigo aqui ...*/
             Debug.Write("OnMouseWheel acction ");
-			int ingrementVertical;
+			//int ingrementVertical;
             foreach (var item in tabControl1.SelectedTab.Controls)
             {
                 Type tipo = typeof(FlowLayoutPanel);
@@ -624,8 +624,8 @@ namespace ShowGifs
                         //if Value+=e.Deta esta ente el minimo y maximo de los se suma.
                         //analizamos el asunto despues.....
                         flow.VerticalScroll.Value = newValor;
-                        flow.Invalidate();
-                        flow.Dispose();
+                        flow.Invalidate(true);
+                        //flow.Dispose();
                     }
                 }
 
@@ -1038,8 +1038,9 @@ namespace ShowGifs
 			Debug.WriteLine($"Mainform: {pathdir}");
 			if (Directory.Exists(pathdir + @"\Thumbails"))
 			{
-				//limpia la pagina actual/seleccionada
-				//añade los nuevos elementos del directorio siguiente
+                Inicio.Default.DirOpenedPreviusCesion = pathdir + @"\Thumbails";
+                //limpia la pagina actual/seleccionada
+                //añade los nuevos elementos del directorio siguiente
                 FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
 				//(FlowLayoutPanel)((TabPage)sender).Controls[0];
 				flow.Controls.Clear();
@@ -1144,6 +1145,8 @@ namespace ShowGifs
                         ((PictureBox)item2).Size = size;
                     }
                 }
+                _alto = alto;
+                _ancho = ancho;
             }
         }
 
@@ -1163,8 +1166,17 @@ namespace ShowGifs
                 //actualizamos la pagina activa recargandola
                 if (manager.isAnyAction)
                 {
-                    IForm vf = this as IForm;
-                    vf?.ChangeDirToExplore(Path.GetDirectoryName(movie));
+                    //IForm vf = this as IForm;
+                    //vf?.ChangeDirToExplore(Path.GetDirectoryName(movie));
+                    FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
+                    foreach (var item in flow.Controls)
+                    {
+                       if(CurrentFilePath.Equals((string)((PictureBox)item).Tag))
+                        {
+                            int index =flow.Controls.IndexOf((Control)item);
+                            flow.Controls.RemoveAt(index);
+                        }
+                    }
                 }
             }
             

@@ -61,7 +61,7 @@ namespace BlockLib
 			NameVideo = nameVideo;
 			string path = Path.GetDirectoryName(NameVideo);
 			string name = Path.GetFileName(NameVideo);
-			NameThumb = path + @"\Thumbails\"+ name+"_Thumbs_0000.gif";
+			NameThumb = path + @"\Thumbails\"+ name + "_thumbs_0000.gif";
 			ExistThumb=ExistVideo=Asociate=false;
 			Inicializa();
 		}
@@ -134,10 +134,10 @@ namespace BlockLib
 		    {
 				//destino ficheros
 				FileLibrary.RenameFile(NameVideo, NewFileName);
-				FileLibrary.RenameFile(NameThumb, NewFileName + "_Thumbs_0000.gif");
+				FileLibrary.RenameFile(NameThumb, NewFileName + "_thumbs_0000.gif");
 				//no hace nada mas.
 				NameVideo = Path.Combine(Path.GetDirectoryName(NameVideo),NewFileName);
-				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_Thumbs_0000.gif");
+				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_thumbs_0000.gif");
 				Inicializa();
 		    }
 			//TODO: renombrar los ficheros
