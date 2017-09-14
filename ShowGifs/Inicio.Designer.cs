@@ -94,5 +94,29 @@ namespace ShowGifs {
                 this["NewPath"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("215, 245")]
+        public global::System.Drawing.Size ExplorerSize {
+            get {
+                return ((global::System.Drawing.Size)(this["ExplorerSize"]));
+            }
+            set {
+                this["ExplorerSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point ExplorerTop {
+            get {
+                return ((global::System.Drawing.Point)(this["ExplorerTop"]));
+            }
+            set {
+                this["ExplorerTop"] = value;
+            }
+        }
     }
 }

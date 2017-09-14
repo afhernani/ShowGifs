@@ -66,6 +66,8 @@ namespace ShowGifs
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Explora";
             this.Text = "Explorer Directories";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Explora_FormClosing);
+            this.Load += new System.EventHandler(this.Explora_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
