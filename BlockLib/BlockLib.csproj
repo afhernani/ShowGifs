@@ -58,13 +58,23 @@
       <DependentUpon>ManagerBlocksForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SettingsBlockLib.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>SettingsBlockLib.settings</DependentUpon>
+    </Compile>
     <Compile Include="utilSerializationXml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="mover-1.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
+    <None Include="SettingsBlockLib.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>SettingsBlockLib.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ManagerBlocksForm.resx">

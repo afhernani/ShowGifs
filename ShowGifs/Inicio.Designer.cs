@@ -25,7 +25,7 @@ namespace ShowGifs {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DirOpenedPreviusCesion {
             get {
                 return ((string)(this["DirOpenedPreviusCesion"]));
@@ -61,7 +61,7 @@ namespace ShowGifs {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("160, 120")]
+        [global::System.Configuration.DefaultSettingValueAttribute("200, 160")]
         public global::System.Drawing.Size SpriteSize {
             get {
                 return ((global::System.Drawing.Size)(this["SpriteSize"]));

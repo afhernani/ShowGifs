@@ -112,7 +112,8 @@ namespace BlockLib
 		#region filebrowser
 		void BtnLookOtherClick(object sender, EventArgs e)
 		{
-			FolderBrowserDialog dialog = new FolderBrowserDialog() {
+            
+            FolderBrowserDialog dialog = new FolderBrowserDialog() {
 				
 			};
 			if(!String.IsNullOrEmpty(FullName)){
@@ -120,7 +121,7 @@ namespace BlockLib
 			}
 			if (dialog.ShowDialog()==DialogResult.OK) {
 				NewPath =textBoxRename.Text = dialog.SelectedPath;
-			}
+            }
 	
 		}
 		void BtnLookFileClick(object sender, EventArgs e)
@@ -176,7 +177,93 @@ namespace BlockLib
 		{
 			NewPath = textBoxRename.Text;
 		}
-		#endregion
-		
-	}
+        #endregion
+        Form showpaths;
+        private void btnLookOther_MouseDown(object sender, MouseEventArgs e)
+        {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    FolderBrowserDialog dialog = new FolderBrowserDialog()
+                    {
+
+                    };
+                    if (!String.IsNullOrEmpty(FullName))
+                    {
+                        dialog.SelectedPath = Path.GetDirectoryName(FullName);
+                    }
+                    if (dialog.ShowDialog() == DialogResult.OK)
+                    {
+                        NewPath = textBoxRename.Text = dialog.SelectedPath;
+                        SettingsBlockLib.Default.lastfourpath = NewPath + "|" + SettingsBlockLib.Default.lastfourpath;
+                        SettingsBlockLib.Default.Save();
+                        //do: comprobar que no está repetido para añadir
+                    }
+                    break;
+                case MouseButtons.None:
+                    break;
+                case MouseButtons.Right:
+                    //crear un formulario
+                    Point point = this.PointToScreen(btnLookOther.Location);//Control.MousePosition);
+                    showpaths = new Form()
+                    {
+                        //Parent = this,
+                        Text = "Old paths",
+                        Height = 100,
+                        Width = 250,
+                        FormBorderStyle = FormBorderStyle.None,
+                        StartPosition = FormStartPosition.Manual,
+                        Location = point,
+                    };
+                    
+                    ListBox listapaths = new ListBox()
+                    {
+                        Dock = DockStyle.Fill,
+                        HorizontalScrollbar = true,
+                    };
+                    listapaths.SelectedIndexChanged += SelectedIndexChangePath;
+                    string[] korz = SettingsBlockLib.Default.lastfourpath.Split('|');
+                    int n = 0;//reseteo a cero
+                    int max = SettingsBlockLib.Default.MaxiEnters;//maximo de valores
+                    string gesund = null;
+                    foreach (var schon in korz)
+                    {
+                        if (n < max)
+                        {
+                            listapaths.Items.Add(schon);
+                            gesund += schon + "|";
+                        }
+                        n++;
+                    }
+                    SettingsBlockLib.Default.lastfourpath = gesund;
+                    SettingsBlockLib.Default.Save();
+                    showpaths.Controls.Add(listapaths);
+                    showpaths.ShowDialog();
+                    break;
+                case MouseButtons.Middle:
+                    break;
+                case MouseButtons.XButton1:
+                    break;
+                case MouseButtons.XButton2:
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void showpathsFormClosed()
+        {
+            showpaths.Close();
+        }
+
+        private void SelectedIndexChangePath(object sender, EventArgs e)
+        {
+            ListBox over = (ListBox)(sender);
+            if (over.SelectedIndex != -1)
+            {
+                NewPath = textBoxRename.Text = (string)over.SelectedItem;
+                showpathsFormClosed();
+            }
+        }
+    }
 }

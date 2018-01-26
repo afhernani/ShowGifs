@@ -79,12 +79,12 @@ namespace ShowGifs
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripExplorer = new System.Windows.Forms.ToolStripButton();
             this.toolStripBuscar = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButtonOperationFile = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSettin = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripHelp = new System.Windows.Forms.ToolStripButton();
             this.toolStripAbout = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButtonOperationFile = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1.SuspendLayout();
             this.toolStripContainer1.BottomToolStripPanel.SuspendLayout();
             this.toolStripContainer1.ContentPanel.SuspendLayout();
@@ -201,11 +201,11 @@ namespace ShowGifs
             // toolStripContainer1.ContentPanel
             // 
             this.toolStripContainer1.ContentPanel.Controls.Add(this.tabControl1);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(564, 369);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(676, 369);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
-            this.toolStripContainer1.Size = new System.Drawing.Size(564, 430);
+            this.toolStripContainer1.Size = new System.Drawing.Size(676, 430);
             this.toolStripContainer1.TabIndex = 0;
             this.toolStripContainer1.Text = "toolStripContainer1";
             // 
@@ -220,7 +220,7 @@ namespace ShowGifs
             this.toolStripStatusLabel1});
             this.statusStrip1.Location = new System.Drawing.Point(0, 0);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(564, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(676, 22);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -238,7 +238,7 @@ namespace ShowGifs
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(564, 369);
+            this.tabControl1.Size = new System.Drawing.Size(676, 369);
             this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl1Selected);
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.OnDragDrop);
@@ -254,7 +254,7 @@ namespace ShowGifs
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(556, 343);
+            this.tabPage1.Size = new System.Drawing.Size(668, 343);
             this.tabPage1.TabIndex = 1;
             this.tabPage1.Text = "tabPage1";
             // 
@@ -265,7 +265,7 @@ namespace ShowGifs
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(550, 337);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(662, 337);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // toolStrip
@@ -292,7 +292,7 @@ namespace ShowGifs
             this.toolStrip.Location = new System.Drawing.Point(3, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.toolStrip.Size = new System.Drawing.Size(469, 39);
+            this.toolStrip.Size = new System.Drawing.Size(438, 39);
             this.toolStrip.TabIndex = 3;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -382,6 +382,16 @@ namespace ShowGifs
             this.toolStripBuscar.Text = "Search files";
             this.toolStripBuscar.Click += new System.EventHandler(this.ToolStripBuscarClick);
             // 
+            // toolStripButtonOperationFile
+            // 
+            this.toolStripButtonOperationFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButtonOperationFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperationFile.Image")));
+            this.toolStripButtonOperationFile.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButtonOperationFile.Name = "toolStripButtonOperationFile";
+            this.toolStripButtonOperationFile.Size = new System.Drawing.Size(36, 36);
+            this.toolStripButtonOperationFile.Text = "toolStripButton1";
+            this.toolStripButtonOperationFile.Click += new System.EventHandler(this.toolStripButtonOperationFile_Click);
+            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
@@ -422,23 +432,13 @@ namespace ShowGifs
             this.toolStripAbout.ToolTipText = "About";
             this.toolStripAbout.Click += new System.EventHandler(this.ToolStripAboutClick);
             // 
-            // toolStripButtonOperationFile
-            // 
-            this.toolStripButtonOperationFile.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButtonOperationFile.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButtonOperationFile.Image")));
-            this.toolStripButtonOperationFile.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButtonOperationFile.Name = "toolStripButtonOperationFile";
-            this.toolStripButtonOperationFile.Size = new System.Drawing.Size(36, 36);
-            this.toolStripButtonOperationFile.Text = "toolStripButton1";
-            this.toolStripButtonOperationFile.Click += new System.EventHandler(this.toolStripButtonOperationFile_Click);
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(564, 430);
+            this.ClientSize = new System.Drawing.Size(676, 430);
             this.Controls.Add(this.toolStripContainer1);
             this.DoubleBuffered = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));

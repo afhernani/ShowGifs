@@ -3,7 +3,7 @@
   <Profiles />
   <Settings>
     <Setting Name="DirOpenedPreviusCesion" Type="System.String" Scope="User">
-      <Value Profile="(Default)">""</Value>
+      <Value Profile="(Default)" />
     </Setting>
     <Setting Name="FormSize" Type="System.Drawing.Size" Scope="User">
       <Value Profile="(Default)">0, 0</Value>
@@ -12,7 +12,7 @@
       <Value Profile="(Default)">C:\</Value>
     </Setting>
     <Setting Name="SpriteSize" Type="System.Drawing.Size" Scope="User">
-      <Value Profile="(Default)">160, 120</Value>
+      <Value Profile="(Default)">200, 160</Value>
     </Setting>
     <Setting Name="isSearch" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
