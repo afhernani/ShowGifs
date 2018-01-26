@@ -49,5 +49,18 @@ namespace ShowGifs
             IForm forminterfas = this.Owner as IForm;
             forminterfas?.ChangeDirToExplore(txtPath);
         }
+
+        private void Explora_Load(object sender, EventArgs e)
+        {
+            this.Location = Inicio.Default.ExplorerTop;
+            this.Size = Inicio.Default.ExplorerSize;
+        }
+
+        private void Explora_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Inicio.Default.ExplorerTop = this.Location;
+            Inicio.Default.ExplorerSize = this.Size;
+            Inicio.Default.Save();
+        }
     }
 }

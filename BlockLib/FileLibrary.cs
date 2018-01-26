@@ -166,24 +166,24 @@ namespace FileLib
                 {
                     destPath = System.IO.Path.Combine(destPath, System.IO.Path.GetFileName(origPath));
                 }
-                if(!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(destPath)))
-                {
+                if(!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(destPath))) 
+                {   //si no existe directorio destino - lo crea
                     CreateEmptyDirectory(System.IO.Path.GetDirectoryName(destPath));
                 }
                 if (!System.IO.File.Exists(destPath))
-                {
+                {   //si no existe el fichero en el destino, lo copia sin mas
                     System.IO.File.Move(origPath, destPath);
                 }
                 else
-                {
-                    if (overwrite == true)
+                { // en caso que exista
+                    if (overwrite == true) //sobreescribir??
                     {
                         if (destPath.Equals(origPath)) return; //si es el mismo fichero
-                        DeleteFile(destPath);
-                        System.IO.File.Move(origPath, destPath);
+                        DeleteFile(destPath); //borra el fichero en el destino
+                        System.IO.File.Move(origPath, destPath); //mueve el fichero origen->destino
                     }
                 }
-                OnFileEndHandler("File has been moved.");
+                OnFileEndHandler("File has been moved."); //dispara el evento fin de accion.
             }
             catch (Exception ex)
             {

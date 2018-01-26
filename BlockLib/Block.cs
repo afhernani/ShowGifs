@@ -61,7 +61,7 @@ namespace BlockLib
 			NameVideo = nameVideo;
 			string path = Path.GetDirectoryName(NameVideo);
 			string name = Path.GetFileName(NameVideo);
-			NameThumb = path + @"\Thumbails\"+ name+"_Thumbs_0000.gif";
+			NameThumb = path + @"\Thumbails\"+ name + "_thumbs_0000.gif";
 			ExistThumb=ExistVideo=Asociate=false;
 			Inicializa();
 		}
@@ -87,6 +87,7 @@ namespace BlockLib
 		}
 		/// <summary>
 		/// mover los ficheros a la dirección indicada.
+        /// si existe un fichero con el mismo nonbre lo sobreescribe.
 		/// </summary>
 		/// <param name="ToPath"></param>
 		public void Move(string ToPath)
@@ -98,8 +99,8 @@ namespace BlockLib
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
 				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//mover cada uno.
-				FileLibrary.MoveFile(NameVideo, toFileVideo, true);
-				FileLibrary.MoveFile(NameThumb, toFileThumb, true);
+				FileLibrary.MoveFile(NameVideo, toFileVideo, false); //no sobreescribir
+				FileLibrary.MoveFile(NameThumb, toFileThumb, false);
 				//debemos actualizar los valores
 				NameVideo = toFileVideo;
 				NameThumb = toFileThumb;
@@ -119,8 +120,8 @@ namespace BlockLib
 				string toFileVideo = Path.Combine(ToPath, Path.GetFileName(NameVideo));
 				string toFileThumb = Path.Combine(ToPath+@"\Thumbails", Path.GetFileName(NameThumb));
 				//copiar cada uno
-				FileLibrary.CopyFile(NameVideo, toFileVideo, true);
-				FileLibrary.CopyFile(NameThumb, toFileThumb, true);
+				FileLibrary.CopyFile(NameVideo, toFileVideo, false);//no sobreescribe
+				FileLibrary.CopyFile(NameThumb, toFileThumb, false);
 				//no hace nada mas.
 		    }
 		}
@@ -134,10 +135,10 @@ namespace BlockLib
 		    {
 				//destino ficheros
 				FileLibrary.RenameFile(NameVideo, NewFileName);
-				FileLibrary.RenameFile(NameThumb, NewFileName + "_Thumbs_0000.gif");
+				FileLibrary.RenameFile(NameThumb, NewFileName + "_thumbs_0000.gif");
 				//no hace nada mas.
 				NameVideo = Path.Combine(Path.GetDirectoryName(NameVideo),NewFileName);
-				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_Thumbs_0000.gif");
+				NameThumb = Path.Combine(Path.GetDirectoryName(NameThumb),NewFileName + "_thumbs_0000.gif");
 				Inicializa();
 		    }
 			//TODO: renombrar los ficheros
