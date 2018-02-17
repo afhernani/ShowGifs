@@ -37,7 +37,7 @@ namespace BlockLib {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("6")]
+        [global::System.Configuration.DefaultSettingValueAttribute("12")]
         public int MaxiEnters {
             get {
                 return ((int)(this["MaxiEnters"]));

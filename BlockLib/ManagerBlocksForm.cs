@@ -261,9 +261,32 @@ namespace BlockLib
             ListBox over = (ListBox)(sender);
             if (over.SelectedIndex != -1)
             {
+                if (String.IsNullOrEmpty((string)over.SelectedItem)) return;
                 NewPath = textBoxRename.Text = (string)over.SelectedItem;
+                SelectToHead();
                 showpathsFormClosed();
             }
+        }
+        private void SelectToHead()
+        {
+            //sabemos cual ha sido seleccionado, por tanto:
+            string[] korz = SettingsBlockLib.Default.lastfourpath.Split('|');
+            //recorremos hasta encontrarla y la colocamos en cabeza.
+            string gesund = String.Empty;
+            foreach (var schon in korz)
+            {
+                if (textBoxRename.Text.Equals(schon))
+                {
+                    gesund = schon + "|" + gesund;
+                }
+                else
+                {
+                    gesund += schon + "|";
+                }
+                
+            }
+            SettingsBlockLib.Default.lastfourpath = gesund;
+            SettingsBlockLib.Default.Save();
         }
     }
 }
