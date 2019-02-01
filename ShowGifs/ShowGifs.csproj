@@ -44,6 +44,9 @@
     <StartupObject>ShowGifs.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="LibPanes">
+      <HintPath>..\..\LibPanes\LibPanes\bin\Debug\LibPanes.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
