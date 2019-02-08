@@ -20,6 +20,7 @@ using System.Threading;
 using Explora;
 using Mark;
 using ThumbLib;
+using LibPanes;
 
 namespace ShowGifs
 {
@@ -53,16 +54,18 @@ namespace ShowGifs
 			{
 				if (fileInfo.Extension == ".gif" || fileInfo.Extension == ".GIF")
 				{
-					PictureBox sprite = new PictureBox()
+					ImagenBox sprite = new ImagenBox()
 					{
 						Width = _ancho,
                         Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = fileInfo.FullName,
-                        Image = Utilities.Image.FromFile(fileInfo.FullName),
-						//Image = (Image)Image.FromFile(fileInfo.FullName).Clone(),                        
+                        //Image = Utilities.Image.FromFile(fileInfo.FullName),
+						//Image = (Image)Image.FromFile(fileInfo.FullName).Clone(), 
 					};
+                    sprite.FromFile(fileInfo.FullName);
+                    sprite.SetCurrentFrame = (int)sprite.Count / 2;
 					//sprite.Tag = fileInfo.FullName;
 					//sprite.Image = (Image)Image.FromFile(fileInfo.FullName).Clone();
 					sprite.SizeMode = PictureBoxSizeMode.Zoom;
@@ -73,9 +76,9 @@ namespace ShowGifs
 			}
 		}
 
-		private delegate void setcallBackflowLayout(PictureBox sprite, FlowLayoutPanel flow);
+		private delegate void setcallBackflowLayout(ImagenBox sprite, FlowLayoutPanel flow);
 
-		private void flowControlsAdd(PictureBox sprite, FlowLayoutPanel flow)
+		private void flowControlsAdd(ImagenBox sprite, FlowLayoutPanel flow)
 		{
 			if (this.InvokeRequired)
 			{
@@ -97,7 +100,7 @@ namespace ShowGifs
 
 		private void sprite_MouseClick(object sender, MouseEventArgs e)
 		{
-			PictureBox sprite = (PictureBox)sender;
+			ImagenBox sprite = (ImagenBox)sender;
 			CurrentFilePath = sprite.Tag.ToString();
 			string filesearch = GetFileNameFromString(sprite.Tag.ToString());
 			CurrentFile = filesearch;
@@ -120,9 +123,9 @@ namespace ShowGifs
 				{
 					//abrir formulario con la imagen.
                     FGif fgif = new FGif();
-					Size size = new Size(sprite.Image.Width, sprite.Image.Height);
+					Size size = new Size(sprite.Imagen.Width, sprite.Imagen.Height);
 					fgif.Size = size;
-					fgif.ImageToView = sprite.Image;
+					fgif.ImageToView = sprite.Imagen;
 					fgif.Tag = sprite.Tag;
 					fgif.Show();
 					Debug.WriteLine("sprite_mouseClick_left + Key-Control: presed");
@@ -156,7 +159,7 @@ namespace ShowGifs
 		private void sprite_Click(Object sender, EventArgs e)
 		{
 			Debug.WriteLine("sprite_Click");
-			PictureBox sprite = (PictureBox)sender;
+			ImagenBox sprite = (ImagenBox)sender;
 			CurrentFilePath = sprite.Tag.ToString();
 			Debug.WriteLine("name = " + CombineAddressFileMovie(sprite.Tag.ToString()));
 			//pictureBox1.Image = sprite.Sprite;
@@ -677,15 +680,17 @@ namespace ShowGifs
 
 				if (File.Exists(item))
 				{
-					PictureBox sprite = new PictureBox()
+					ImagenBox sprite = new ImagenBox()
 					{
 						Width = _ancho,
                         Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = item,
-                        Image = (Image)Utilities.Image.FromFile(item).Clone(),
+                        //Image = (Image)Utilities.Image.FromFile(item).Clone(),
 					};
+                    sprite.FromFile(item);
+                    sprite.SetCurrentFrame = (int)sprite.Count / 2;
 					//sprite.Tag = fileInfo.FullName;
 					//sprite.Image = (Image)Image.FromFile(fileInfo.FullName).Clone();
 					sprite.SizeMode = PictureBoxSizeMode.Zoom;
@@ -872,7 +877,7 @@ namespace ShowGifs
 				controls = flow.Controls;
 			}
 
-			List<PictureBox> _listPictures = controls.Cast<PictureBox>().ToList();
+			List<ImagenBox> _listPictures = controls.Cast<ImagenBox>().ToList();
 			if (_listPictures.Count == -1)
 				return;
 			try
@@ -935,15 +940,17 @@ namespace ShowGifs
 
 				if (File.Exists(item))
 				{
-					PictureBox sprite = new PictureBox()
+					ImagenBox sprite = new ImagenBox()
 					{
 						Width = _ancho,
                         Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = item,
-                        Image = (Image)Utilities.Image.FromFile(item).Clone(),
+                        //Image = (Image)Utilities.Image.FromFile(item).Clone(),
 					};
+                    sprite.FromFile(item);
+                    sprite.SetCurrentFrame = (int)sprite.Count / 2;
 					//sprite.Tag = fileInfo.FullName;
 					//sprite.Image = (Image)Image.FromFile(fileInfo.FullName).Clone();
 					sprite.SizeMode = PictureBoxSizeMode.Zoom;
@@ -984,7 +991,7 @@ namespace ShowGifs
             FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
 			if (flow.Controls.Count == 0)
 				return;
-			PictureBox picture = (PictureBox)flow.Controls[0];
+			ImagenBox picture = (ImagenBox)flow.Controls[0];
 			if (picture != null)
 			{
 				string direccion = picture.Tag.ToString();
@@ -1077,16 +1084,18 @@ namespace ShowGifs
 			{
 				if (file!= null && (file.Extension == ".gif" || file.Extension == ".GIF"))
 				{
-					PictureBox sprite = new PictureBox()
+					ImagenBox sprite = new ImagenBox()
 					{
 						Width = _ancho,
                         Height = _alto,
                         BackColor = Color.BurlyWood,
                         SizeMode = PictureBoxSizeMode.StretchImage,
                         Tag = file.FullName,
-                        Image = Utilities.Image.FromFile(file.FullName),
+                        //Image = Utilities.Image.FromFile(file.FullName),
 						//Image = (Image)Image.FromFile(fileInfo.FullName).Clone(),                        
 					};
+                    sprite.FromFile(file.FullName);
+                    sprite.SetCurrentFrame = (int)sprite.Count / 2;
 					//sprite.Tag = fileInfo.FullName;
 					//sprite.Image = (Image)Image.FromFile(fileInfo.FullName).Clone();
 					sprite.SizeMode = PictureBoxSizeMode.Zoom;
@@ -1142,7 +1151,7 @@ namespace ShowGifs
                     TabPage pagina = (TabPage)item;
                     foreach (var item2 in pagina.Controls[0].Controls)
                     {
-                        ((PictureBox)item2).Size = size;
+                        ((ImagenBox)item2).Size = size;
                     }
                 }
                 _alto = alto;
@@ -1171,7 +1180,7 @@ namespace ShowGifs
                     FlowLayoutPanel flow = (FlowLayoutPanel)tabControl1.SelectedTab.Controls[0];
                     foreach (var item in flow.Controls)
                     {
-                       if(CurrentFilePath.Equals((string)((PictureBox)item).Tag))
+                       if(CurrentFilePath.Equals((string)((ImagenBox)item).Tag))
                         {
                             int index =flow.Controls.IndexOf((Control)item);
                             flow.Controls.RemoveAt(index);
